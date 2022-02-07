@@ -1,0 +1,193 @@
+*{
+    padding:0;
+    margin:0;
+    font-family:sans-serif, "Arial", "Segoe UI";
+    box-sizing:border-box;
+}
+
+p{
+    font-size:0.9em;
+    color:black;
+}
+
+body{
+    width:100%;
+    margin:0 auto;
+}
+
+/*Main page Start*/
+.head{
+    width:100vw;
+    background-color: #329CE5;
+    height:55px;
+    display:grid;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+}
+
+nav ul{
+    display:flex;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin: 0 20px;
+}
+
+nav ul li a{
+    padding:1px;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a h3{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li textarea{
+    resize: none;
+    height:32px;
+    width:250px;
+    color: lightslategrey;
+    padding-top:9px;
+    padding-left: 10px; 
+    border:none;
+}
+
+.product{
+    padding-top:20px;
+}
+
+.product img{
+    padding-left:300px;
+    display:grid;
+    grid-auto-columns: auto;
+
+}
+
+.product h2{
+    padding-left:680px;
+    padding-bottom:5px;
+}
+
+.product h3{
+    padding-left:680px;
+    padding-bottom:5px;
+}
+
+.product p{
+    padding-left:680px;
+    padding-right:300px;
+    padding-bottom:20px;
+}
+
+.sub{
+    padding-left:680px;
+}
+
+.sub input[type="submit"]{
+    Background-color: #329CE5;
+    padding: 6px 10px;
+    border-style: none;
+    color: white;
+    font-weight:700;
+    width:150px;
+    display: flex;
+    justify-content: center;
+}
+
+.picture{
+    padding-left:125px;
+    display:grid;
+    grid-template-columns: 300px 300px 300px 300px;
+}
+
+.pictures{
+    padding:10px;
+    margin: 20px 10px 0px 0px;
+}
+/*Main page End*/
+
+/*Login page Start*/
+.center{
+  padding-top:80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formBox{
+  width: 430px;
+  height: auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.form div{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 400px;
+}
+
+.form a{
+  padding-left: 15px;
+  color: black;
+  text-decoration: none;
+}
+
+.right{
+  display: flex;
+  justify-content: space-between;
+}
+
+.right div{
+  width: auto;
+}
+
+.contentText{
+  padding-top:10px;
+  display: flex;
+  margin-right: auto;
+  margin-left: 1em;
+  font-size: .8em;
+}
+
+.contentText h1{
+  margin-bottom: .5em;
+}
+
+input:active{
+  background: none;
+}
+
+input[type=text], input[type=password], input[type=Username]{
+  font-size: 1.2em;
+  padding: 3px;
+  border: 1px solid black;
+  width: 100%;
+  background: white;
+}
+
+input[type=submit]{
+    background-color: #329CE5;
+    padding: 6px 10px;
+    border-style: none;
+    color: white;
+    font-weight:700;
+    width:120px;
+}
+
+.success{
+  margin-top: 1em;
+  color: green;
+}
