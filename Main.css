@@ -254,7 +254,12 @@ article{
     margin:30px;
 }
 
-.UandC input{
-    height:40px;
+.UandC input[type=submit]{
+    height: 35px;
+    background-color: #329CE5;
+    padding: 6px 10px;
+    border-style: none;
+    color: white;
+    font-weight:700;
+    width:120px;
 }
-
