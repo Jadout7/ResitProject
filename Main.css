@@ -263,3 +263,47 @@ article{
     font-weight:700;
     width:120px;
 }
+
+.orderBox{
+    padding-top:20px;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    width: 100%;
+    max-width: 1024px;
+    margin: 10px auto;
+    background-color:gainsboro;
+}
+
+.orderBox h2{
+    padding-left:20px;
+    padding-right:80px;
+    padding-bottom:15px;
+}
+
+.orderBox h3{
+    padding-left:150px;
+    padding-bottom:15px;
+}
+
+.orderBox a{
+    padding-bottom:20px;
+    margin-left: 210px;
+    text-decoration: none;
+    color:black;
+}
+
+
+.more{
+    display:flex;
+    justify-content: flex-end;
+    padding-left:10px;
+    padding-right: 335px;
+    margin:40px 0 0 0;
+}
+
+.more a{
+    text-decoration: none;
+    color: black;
+}
+
