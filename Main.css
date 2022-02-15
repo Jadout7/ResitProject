@@ -15,6 +15,10 @@ body{
     margin:0 auto;
 }
 
+textarea{
+    resize: none;
+}
+
 /*Main page Start*/
 .head{
     width:100vw;
