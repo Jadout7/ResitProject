@@ -311,3 +311,50 @@ article{
     color: black;
 }
 
+/* Register page start */
+
+.register {
+    display: flex;
+    justify-content: center;
+}
+
+.registerForm {
+    width: 430px;
+    height: auto;
+    border: 1px solid black;
+    margin: 110px;
+}
+
+.reg {
+    height: 35px;
+    background-color: #329CE5;
+    padding: 6px 10px;
+    border-style: none;
+    color: white;
+    font-weight: 700;
+    width: 110px;
+}
+
+.registerForm div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    width: 400px;
+}
+
+.registerForm h1 {
+    padding-top:10px;
+    display: flex;
+    margin-right: auto;
+    margin-left: 0.5em;
+    font-size: 1.5em;
+    padding-bottom: 0.5em;
+}
+
+.log a {
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+
+/* Register page end */
