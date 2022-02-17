@@ -15,21 +15,47 @@
                 <div class="registerCenter">
                     <div class="registerForm">
                         <h1>Register</h1>
-                        <form method="post" action="">
+                        <form method="post" autocomplete="off">
                             <div>
-                                <label id='Username'>Username</label>
-                                <input type="text" name="Username">
+                                <label for='firstName'>First name</label>
+                                <input type="text" name="firstName">
                             </div>
                             <div>
-                                <label id='password'>Password</label>
+                                <label for='lastName'>Last name</label>
+                                <input type="text" name="lastName">
+                            </div>
+                            <div>
+                                <label for='email'>Email</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div>
+                                <label for='password'>Password</label>
                                 <input type="password" name="password">
                             </div>
+                            <div>
+                                <label for='confirmPassword'>Confirm Password</label>
+                                <input type="password" name="confirmPassword">
+                            </div>
                             <div class="log">
-                                <input type="submit" name="register" value="Register" class="reg">
+                                <input type="submit" name="register" value="Create account" class="reg">
                                 <a href='Login.php'>Login</a>
                             </div>
                         </form>
                     </div>
+                    <?php
+                    $error = NULL;
+                    if (isset($_POST['register'])) {
+                        if (!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) { //check if all fields have been filled
+                            if ($_POST['password'] == $_POST['confirmPassword']) {
+
+                            }else{
+                                $error = "Passwords don't match!";
+                            }
+                        }else{
+                            $error = "Please fill in all fields!";
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </main>
