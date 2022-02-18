@@ -47,71 +47,84 @@
                                 <a href='Login.php'>Login</a>
                             </div>
                         </form>
-                    </div>
-                    <?php
-                        $error = NULL;
-                        if (isset($_POST['register'])) {
-                            if (!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) { //check if all fields are filled
-                                if ($_POST['password'] == $_POST['confirmPassword']) { //check if the entered passwords are the same
-                                    if (strlen(trim($_POST['password'])) > 6) { //check if the password is longer than 6 char.
-                                        $email = $_POST["email"];
-                                        if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //validate the email format
-                                            $sql = "SELECT email FROM user WHERE email = ?"; //query command to search if email already exists
-                                            $result = $conn->query("SELECT email FROM user WHERE email = ?");
-                                            if ($result->num_rows == 0) {
-                                                $emailHandle = substr(($email), strpos(($email), "@") + 1); //get the email handle
-                                                if (str_contains($emailHandle, 'administator')) {
-                                                    $type = "administrator";
-                                                }elseif (str_contains($emailHandle, 'orderpicker')) {
-                                                    $type = "orderpicker";
-                                                }else {
-                                                    $type = "customer";
-                                                }
-                                                if (($_POST['age']) == 'ofAge') {
-                                                    $ofage = "yes";
-                                                }else {
-                                                    $ofage = "no";
-                                                }
-                                                $firstName = $_POST['firstName'];
-                                                $lastName = $_POST['lastName'];
-                                                $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //hash password
-                                                $token = hash('sha256', time().$email);
-                                                $sql = "INSERT INTO user (firstname, lastname, email, password, token, user_type, ofage) VALUES (?,?,?,?,?,?,?)"; //the query for inserting into the database
-                                                if ($stmt = mysqli_prepare($conn, $sql)) {
-                                                    mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $email, $password, $token, $type, $ofage); //bind values to parameters
+                        <div>
+                            <?php
+                            $conn = mysqli_connect("localhost", "root", "", "webshop");
+                            $error = NULL;
+                            if (isset($_POST['register'])) {
+                                if (!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) { //check if all fields are filled
+                                    if ($_POST['password'] == $_POST['confirmPassword']) { //check if the entered passwords are the same
+                                        if (strlen(trim($_POST['password'])) > 6) { //check if the password is longer than 6 char.
+                                            $email = $_POST["email"];
+                                            if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //validate the email format
+                                                $sql = "SELECT email FROM user WHERE email = ?"; //query command to search if email already exists
+                                                if($stmt = mysqli_prepare($conn, $sql)) {
+                                                    mysqli_stmt_bind_param($stmt, "s", $_POST['email']);
                                                     if (mysqli_stmt_execute($stmt)) {
-                                                        echo "Account created successfully!";
-                                                        mysqli_stmt_close($stmt); //close statement
-                                                        mysqli_close($conn); //close connection
-                                                        header("location:./Main.php"); //redirect to the main page
-                                                    }else {
-                                                        $error = "Error: " . mysqli_error($conn);
-                                                        die(); //die if we cant execute statement
+                                                        mysqli_stmt_store_result($stmt);
+                                                        if (mysqli_stmt_num_rows($stmt) == 0) {
+                                                            $emailHandle = substr(($email), strpos(($email), "@") + 1); //get the email handle
+                                                            if (str_contains($emailHandle, 'administator')) {
+                                                                $type = "administrator";
+                                                            } elseif (str_contains($emailHandle, 'orderpicker')) {
+                                                                $type = "orderpicker";
+                                                            } else {
+                                                                $type = "customer";
+                                                            }
+                                                            if (($_POST['age']) == 'ofAge') {
+                                                                $ofage = "yes";
+                                                            } else {
+                                                                $ofage = "no";
+                                                            }
+                                                            $firstName = $_POST['firstName'];
+                                                            $lastName = $_POST['lastName'];
+                                                            $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //hash password
+                                                            $token = hash('sha256', time() . $email);
+                                                            $sql = "INSERT INTO user (firstname, lastname, email, password, token, user_type, ofage) VALUES (?,?,?,?,?,?,?)"; //the query for inserting into the database
+                                                            if ($stmt = mysqli_prepare($conn, $sql)) {
+                                                                mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $email, $password, $token, $type, $ofage); //bind values to parameters
+                                                                if (mysqli_stmt_execute($stmt)) {
+                                                                    echo "Account created successfully!";
+                                                                    mysqli_stmt_close($stmt); //close statement
+                                                                    mysqli_close($conn); //close connection
+                                                                } else {
+                                                                    $error = "Error: " . mysqli_error($conn);
+                                                                    die(); //die if we cant execute statement
+                                                                }
+                                                            } else {
+                                                                $error = "Error: " . mysqli_error($conn);
+                                                                die(); //die if statement can't be prepared
+                                                            }
+                                                        } else {
+                                                            $error = "Email already exists.";
+                                                        }
+                                                    } else {
+                                                        $error = "Error executing query" . mysqli_error($conn);
+                                                        die();
                                                     }
                                                 }else {
-                                                    $error = "Error: " . mysqli_error($conn);
-                                                    die(); //die if statement can't be prepared
+                                                    $error = "Error executing query" . mysqli_error($conn);
+                                                    die();
                                                 }
                                             }else {
-                                                $error = "Email already exists.";
+                                                $error = "Invalid email.";
                                             }
                                         }else {
-                                            $error = "Invalid email.";
+                                            $error = "Password must be longer than 6 characters!";
                                         }
-                                    }else {
-                                        $error = "Password must be longer than 6 characters!";
+                                    }else{
+                                        $error = "Passwords don't match!";
                                     }
                                 }else{
-                                    $error = "Passwords don't match!";
+                                    $error = "Please fill in all fields!";
                                 }
-                            }else{
-                                $error = "Please fill in all fields!";
+                                if($error != NULL){ //echo error if the variable has been set
+                                    echo $error;
+                                }
                             }
-                            if($error != NULL){ //echo error if the variable has been set
-                                echo $error;
-                            }
-                        }
-                    ?>
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
