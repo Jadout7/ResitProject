@@ -17,8 +17,8 @@
             </div>
             <div class="userInfo">
             <?php
-            echo "<p><a href='./login.php'>Login</a></p>";
-            echo "<p><a href='./register.php'>Register</a></p>";
+            echo "<p><h2><a href='./login.php'>Login</a></h2></p>";
+            echo "<p><h2><a href='./register.php'>Register</a></h2></p>";
             ?>
             </div>
         </nav>
