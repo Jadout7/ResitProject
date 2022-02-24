@@ -18,7 +18,7 @@
             <div class="userInfo">
             <?php
             if($_SESSION['type'] == "admin"){
-                echo "<p><a href='./additem.php'>Maintenance</a></p>";
+                
             }else{
             echo "<p><a href='./login.php'>Login</a></p>";
             echo "<p><a href='./register.php'>Register</a></p>";
