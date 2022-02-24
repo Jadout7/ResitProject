@@ -21,14 +21,13 @@
         <?php
             if($_SESSION['type'] == "admin"){
                 echo "<p><a href='./additem.php'>Maintenance</a></p>";
-            }
-            echo "<p><a href='./logout.php'>Logout</a></p>";
             }else{
             echo "<p><a href='./login.php'>Login</a></p>";
             echo "<p><a href='./register.php'>Register</a></p>";
             echo "<a href='./Cart.php'><h2>Your Cart</h2></a>";
             echo "<a href='./History.php'><h2>Order History</h2></a>";
             }
+            echo "<p><a href='./logout.php'>Logout</a></p>";
         ?>
     </div>
 </header>
