@@ -17,9 +17,6 @@
             </div>
             <div class="userInfo">
             <?php
-            if($_SESSION['type'] == "admin"){
-                
-            }else{
             echo "<p><a href='./login.php'>Login</a></p>";
             echo "<p><a href='./register.php'>Register</a></p>";
             }
