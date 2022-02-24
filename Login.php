@@ -5,11 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Main.css" type="text/css">
+        <?php
+        include 'Database.php';
+        ?>
     </head>
     <body>
-        <?php
-        include 'header.php';
-        ?>
+      <?php
+      include 'header.php';
+      if(isset($_SESSION['sessionID'])) {
+        header('location:./index.php?error=login');
+      }
+      ?>
         <main>
           <div class="center">
             <div class="formBox">
@@ -26,6 +32,10 @@
                         <label id='password'>Password</label>
                         <input type="password" name="password" class="field">
                     </div>
+                    <div>
+                          label for="RemMe">Remember Me</label><br>
+                          <input type="radio" name="RemMe" value="RemMe">
+                    </div>
                     <div class='log'>
                         <input type="submit" name="login" value="Login">
                         <a href='Register.php'>Register</a>
@@ -34,5 +44,71 @@
                 </div>
             </div>
           </div>
+        </main>
+        <?php
+          $error = NULL;
+          if(isset($_POST['login'])){
+            if(!empty($_POST['email']) && !empty($_POST['password'])){
+              if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //validate email
+                $email = $_POST['email'];
+                $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
+                if($stmt = mysqli_prepare($conn, $sql)){ //database parses, compiles, and performs query optimization and stores w/o executing
+                  mysqli_stmt_bind_param($stmt, "s", $email); //need to bind values to parameters
+                  if(mysqli_stmt_execute($stmt)){ //execute the statement
+                    mysqli_stmt_bind_result($stmt, $id, $firstname, $lastname, $password, $type); //bind results
+                    mysqli_stmt_store_result($stmt);
+                    if(mysqli_stmt_num_rows($stmt) != 0){
+                       while(mysqli_stmt_fetch($stmt)){
+                          if(password_verify($_POST['password'], $password)) { //verify password
+                              $_SESSION['firstname'] = $firstname; //set session variables to use across pages
+                              $_SESSION['lastname'] = $lastname;
+                              $_SESSION['sessionID'] = $id;
+                              $_SESSION['email'] = $email;
+                              $_SESSION['type'] = $type;
+                              if(isset($_POST['rememberLogin'])){
+                                $sql = "UPDATE user set token = ? WHERE user_id = ?";
+                                if($stmt = mysqli_prepare($conn, $sql)){
+                                  $token = time().$id;
+                                  mysqli_stmt_bind_param($stmt, "ss", $token, $id);
+                                    if(!mysqli_stmt_execute($stmt)){ //execute the statement
+                                      $error = "Error executing query" . mysqli_error($conn);
+                                      die();
+                                    }else{
+                                      $token = password_hash($token, PASSWORD_DEFAULT);
+                                      $hour = time() + 3600 * 24 * 30;
+                                      setcookie('userid', $id, $hour);
+                                      setcookie('token', $token, $hour);
+                                    }
+                                }
+                              }
+                          }
+                          header("location:./index.php?success=login");
+                        }
+                        }else {
+                            $error = "Incorrect password!";
+                        }
+                        }
+                      }
+                    }else {
+                        $error = "Incorrect email!";
+                    }
+                  }else {
+                      echo "Error executing query";
+                      die(mysqli_error($conn));
+                  }
+                }else{
+                    die(mysqli_error($conn));
+                }
+              }else {
+                  $error = "Invalid email!";
+              }
+            }else {
+                $error = "Please fill in all the fields!";
+            }
+            if($error != NULL){ //echo error if the variable has been set
+                 echo "<div class='warning'>".$error."</div>";
+            }
+          }
+        ?>
     </body>
 </html>
