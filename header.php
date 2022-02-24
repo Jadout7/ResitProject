@@ -24,8 +24,8 @@
             }else{
             echo "<p><a href='./login.php'>Login</a></p>";
             echo "<p><a href='./register.php'>Register</a></p>";
-            echo "<a href='./Cart.php'>Your Cart</a>";
-            echo "<a href='./History.php'>Order History</a>";
+            echo "<p><a href='./Cart.php'>Your Cart</a></p>";
+            echo "<p><a href='./History.php'>Order History</a></p>";
             }
         ?>
     </div>

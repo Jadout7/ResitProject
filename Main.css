@@ -60,7 +60,17 @@ nav ul li a h3{
     flex-direction: column;
     margin-left: auto;
     margin-right: 2em;
-  }
+}
+
+.userInfo h2{
+    font-weight: normal;
+    color: blue;
+}
+
+.userInfo p{
+    padding: 2px;
+    color: gray;
+}
 
 nav ul li textarea{
     resize: none;
