@@ -86,14 +86,13 @@
                               $error = "Incorrect password!";
                           }
                         }
-                      }
-                  }else {
+                    }else {
                       $error = "Incorrect email!";
+                    }
+                  }else {
+                      echo "Error executing query";
+                      die(mysqli_error($conn));
                   }
-                }else {
-                    echo "Error executing query";
-                    die(mysqli_error($conn));
-                }
                 }else{
                     die(mysqli_error($conn));
                 }
