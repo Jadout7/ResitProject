@@ -2,16 +2,6 @@
     <?php
         session_start();
         require_once './includes/RememberMe.php'
-        if(isset($_SESSION['type'])) {
-            if($_SESSION['type'] != 'customer') {
-                echo "<div class='pages'>";
-                echo "<a href='./Main.php'><h2>Home</h2></a>";
-                echo "</div>";
-                echo "<div class='pages'>";
-                echo "<a href='./Cart.php'><h2>Your Cart</h2></a>";
-                echo "</div>";
-            }
-        }
     ?>
     <div class="head">
         <nav>
