@@ -33,7 +33,7 @@
                         <input type="password" name="password" class="field">
                     </div>
                     <div>
-                        <input type="radio" name="RemMe" value="RemMe"> Remember Me
+                        <input type="checkbox" name="RemMe" value="RemMe"> Remember Me
                     </div>
                     <div class='log'>
                         <input type="submit" name="login" value="Login">
