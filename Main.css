@@ -63,8 +63,12 @@ nav ul li a h3{
     text-decoration: none;
 }
 
+.userInfo a{
+    color: white;
+    text-decoration: none;
+}
+
 .userInfo h2{
-    font-weight: normal;
     color: white;
     text-decoration: none;
 }
