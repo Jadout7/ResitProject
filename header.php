@@ -1,7 +1,7 @@
 <header>
     <?php
         session_start();
-        require_once './includes/RememberMe.php'
+        require_once 'RememberMe.php'
     ?>
     <div class="head">
         <nav>
