@@ -33,8 +33,7 @@
                         <input type="password" name="password" class="field">
                     </div>
                     <div>
-                          label for="RemMe">Remember Me</label><br>
-                          <input type="radio" name="RemMe" value="RemMe">
+                        <input type="radio" name="RemMe" value="RemMe"> Remember Me
                     </div>
                     <div class='log'>
                         <input type="submit" name="login" value="Login">
@@ -48,7 +47,7 @@
         <?php
           $error = NULL;
           if(isset($_POST['login'])){
-            if(!empty($_POST['email']) && !empty($_POST['password'])){
+            if(empty($_POST['email']) && empty($_POST['password']) && empty($_POST['RemMe'])){
               if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //validate email
                 $email = $_POST['email'];
                 $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
