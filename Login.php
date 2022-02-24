@@ -58,7 +58,7 @@
                     mysqli_stmt_bind_result($stmt, $id, $firstname, $lastname, $password, $type); //bind results
                     mysqli_stmt_store_result($stmt);
                     if(mysqli_stmt_num_rows($stmt) != 0){
-                       while(mysqli_stmt_fetch($stmt)){
+                        while(mysqli_stmt_fetch($stmt)){
                           if(password_verify($_POST['password'], $password)) { //verify password
                               $_SESSION['firstname'] = $firstname; //set session variables to use across pages
                               $_SESSION['lastname'] = $lastname;
@@ -80,22 +80,20 @@
                                       setcookie('token', $token, $hour);
                                     }
                                 }
+                                header("location:./index.php?success=login");
                               }
+                          }else {
+                              $error = "Incorrect password!";
                           }
-                          header("location:./index.php?success=login");
-                        }
-                        }else {
-                            $error = "Incorrect password!";
-                        }
                         }
                       }
-                    }else {
-                        $error = "Incorrect email!";
-                    }
                   }else {
-                      echo "Error executing query";
-                      die(mysqli_error($conn));
+                      $error = "Incorrect email!";
                   }
+                }else {
+                    echo "Error executing query";
+                    die(mysqli_error($conn));
+                }
                 }else{
                     die(mysqli_error($conn));
                 }
