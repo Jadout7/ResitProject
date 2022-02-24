@@ -19,7 +19,6 @@
             <?php
             echo "<p><a href='./login.php'>Login</a></p>";
             echo "<p><a href='./register.php'>Register</a></p>";
-            }
             ?>
             </div>
         </nav>
