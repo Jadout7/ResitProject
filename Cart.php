@@ -62,7 +62,9 @@
                 <input type="submit" name="check" value="Checkout">
             </div>
         <?php 
-            }
+                    }
+                }
+            }    
         ?>
 
         </main>
