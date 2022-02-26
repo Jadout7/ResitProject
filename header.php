@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="Main.css" type="text/css">
 <header>
     <?php
         session_start();
@@ -14,12 +15,6 @@
                 <ul>
                 <li><textarea name="textarea" id="textarea" placeholder="Zoeken"></textarea></li>
                 </ul>
-            </div>
-            <div class="userInfo">
-            <?php
-            echo "<p><h2><a href='./login.php'>Login</a></h2></p>";
-            echo "<p><h2><a href='./register.php'>Register</a></h2></p>";
-            ?>
             </div>
         </nav>
     </div>
