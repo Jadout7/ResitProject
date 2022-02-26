@@ -56,6 +56,7 @@
                   if(mysqli_stmt_execute($stmt)){ //execute the statement
                     mysqli_stmt_bind_result($stmt, $id, $firstname, $lastname, $password, $type); //bind results
                     mysqli_stmt_store_result($stmt);
+                    header("location:./errors&success.php?success=login");
                     if(mysqli_stmt_num_rows($stmt) != 0){
                         while(mysqli_stmt_fetch($stmt)){
                           if(password_verify($_POST['password'], $password)) { //verify password
@@ -79,7 +80,6 @@
                                       setcookie('token', $token, $hour);
                                     }
                                 }
-                                header("location:./errors&success.php?success=login");
                               }
                           }else {
                               $error = "Incorrect password!";
