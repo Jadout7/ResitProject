@@ -26,7 +26,7 @@
                   <form method="post" action="">
                     <div>
                         <label id='email'>email</label>
-                        <input type="email" name="email" class="field">
+                        <input type="text" name="email" class="field">
                     </div>
                     <div>
                         <label id='password'>Password</label>
