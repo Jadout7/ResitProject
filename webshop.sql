@@ -26,16 +26,14 @@ USE `webshop`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Table structure for table `ordereditem`
 --
 
-CREATE TABLE `item` (
+CREATE TABLE `ordereditem` (
+  `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `description` varchar(300) NOT NULL,
-  `category` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,6 +43,7 @@ CREATE TABLE `item` (
 --
 
 CREATE TABLE `order` (
+  `id` int(11) NOT NULL
   `order_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -68,9 +67,33 @@ CREATE TABLE `user` (
   `ofage` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item`
+--
+
+CREATE TABLE `item` (
+  `item_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `category` varchar(20) NOT NULL,
+  `price` int(11) NOT NULL
+  `image` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ordereditem`
+--
+ALTER TABLE `ordereditem`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `item`
