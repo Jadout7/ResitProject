@@ -22,7 +22,8 @@
                         mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity, $price, $image);
                         mysqli_stmt_store_result($stmt);
                         $pri=$quantity*$price;
-                        if(mysqli_stmt_num_rows($stmt) != 0) {
+                    }
+                }  
         ?>
         <main>
             <div class="mainTitle">
@@ -61,12 +62,6 @@
                 <input type="submit" name="update" value="Update">
                 <input type="submit" name="check" value="Checkout">
             </div>
-        <?php 
-                    }
-                }
-            }    
-        ?>
-
         </main>
     </body>
 </html>
