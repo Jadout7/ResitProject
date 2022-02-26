@@ -25,8 +25,8 @@
                 <div class="form">
                   <form method="post" action="">
                     <div>
-                        <label id='Username'>Username</label>
-                        <input type="text" name="Username" class="field">
+                        <label id='email'>email</label>
+                        <input type="email" name="email" class="field">
                     </div>
                     <div>
                         <label id='password'>Password</label>
@@ -47,7 +47,7 @@
         <?php
           $error = NULL;
           if(isset($_POST['login'])){
-            if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['RemMe'])){
+            if(empty($_POST['email']) && empty($_POST['password'])){
               if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //validate email
                 $email = $_POST['email'];
                 $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
