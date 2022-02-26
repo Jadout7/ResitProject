@@ -394,6 +394,7 @@ article{
 
 .bigBox a{
     text-decoration: none;
+    padding-right:5px;
 }
 
 .bigBox h3{
