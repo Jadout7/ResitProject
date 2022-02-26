@@ -23,9 +23,11 @@
                         echo "<li><a href='./Cart.php'><h3>Your Cart</h3></a></li>";
                         if ($_SERVER['PHP_SELF'] != "/Cart.php") {
                             header("location: ./Cart.php");
+                        }
                         echo "<li><a href='History.php'><h3>Order History</h3></a></li>";
                         if ($_SERVER['PHP_SELF'] != "/History.php") {
                             header("location: ./History.php");
+                        }
                     }
                     ?>
                 <li><a href="Login.php"><h3>Login</h3></a></li>
