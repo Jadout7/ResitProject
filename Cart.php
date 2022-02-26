@@ -73,8 +73,8 @@
                         }else
                         header("location:./errors&success.php?success=ordered_item");
                     }
-                    }else{
-                        header("location: ./errors&success.php?error=formdata");
+                }else{
+                    header("location: ./errors&success.php?error=formdata");
                     mysqli_stmt_close($stmt); //close statement
                     mysqli_close($conn); //close connection
         </main>
