@@ -118,6 +118,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `ordereditem`
+--
+ALTER TABLE `ordereditem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
