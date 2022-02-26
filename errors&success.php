@@ -20,10 +20,6 @@
             echo "<br><p class='warning'>&nbsp;&nbsp;You are already logged in!</p>";
             echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
             }
-            elseif($_GET['error'] == 'register') {
-            echo "<br><p class='warning'>&nbsp;&nbsp;Please log out before registering another account.</p>";
-            echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
-            }
             elseif($_GET['error'] == 'formdata') {
             echo "<br><p class='warning'>&nbsp;&nbsp;Error occured, please try again!</p>";
             echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
