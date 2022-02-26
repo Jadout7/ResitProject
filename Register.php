@@ -63,7 +63,7 @@
                                                         mysqli_stmt_store_result($stmt);
                                                         if (mysqli_stmt_num_rows($stmt) == 0) {
                                                             $emailHandle = substr(($email), strpos(($email), "@") + 1); //get the email handle
-                                                            if (str_contains($emailHandle, 'administator')) {
+                                                            if (str_contains($emailHandle, 'administrator')) {
                                                                 $type = "administrator";
                                                             } elseif (str_contains($emailHandle, 'orderpicker')) {
                                                                 $type = "orderpicker";
