@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="Main.css" type="text/css">
+<?php
+include 'errors&success.php';
+?>
 <header>
     <?php
-        
         session_start();
         require_once 'RememberMe.php'
     ?>
