@@ -29,7 +29,7 @@
             echo "<br><p class='success'>You are now logged into the service!</p>";
             }
             elseif($_GET['success'] == 'logout') {
-                echo "<p class='warning'>You are now logged out of the service.</p>";
+                echo "<br><p class='warning'>You are now logged out of the service.</p>";
               }
             elseif($_GET['success'] == 'ordered_item') {
             echo "<br><p class='success'>Item(s) ordered successfully!</p>";
