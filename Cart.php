@@ -55,13 +55,30 @@
             </article>
             <div class="total">
                 <?php
-                echo"<h2>Total:" .sum($pri). "</h2>";
+                echo"<h2>Total:" .$pri. "</h2>";
                 ?>
             </div>
             <div class="UandC">
                 <input type="submit" name="update" value="Update">
                 <input type="submit" name="check" value="Checkout">
             </div>
+            <?php
+                if(isset($_POST['Checkout'])){
+                    $sql = "INSERT INTO ordereditem (item_id, title, quantity) VALUES (?,?,?);";
+                    if($stmt = mysqli_prepare($conn, $sql)){
+                        mysqli_stmt_bind_param($stmt, "sss", $_SESSION['sessionID'], $item_id, $title, $quantity);
+                        if(!mysqli_stmt_execute($stmt)){
+                        $error = "Error executing query" . mysqli_error($conn);
+                        die($error); //die if we cant execute statement
+                        }else
+                        header("location:./errors&success.php?success=ordered_item");
+                    }
+                    }
+                    mysqli_stmt_close($stmt); //close statement
+                    mysqli_close($conn); //close connection
+                }else{
+                    header("location: ./errors&success.php?error=formdata");
+                }
         </main>
     </body>
 </html>
