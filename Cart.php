@@ -68,12 +68,12 @@
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, "sss", $_SESSION['sessionID'], $item_id, $title, $quantity);
                         if(!mysqli_stmt_execute($stmt)){
-                        $error = "Error executing query" . mysqli_error($conn);
-                        die($error); //die if we cant execute statement
+                            $error = "Error executing query" . mysqli_error($conn);
+                            die($error); //die if we cant execute statement
                         }else
                         header("location:./errors&success.php?success=ordered_item");
                     }else{
-                    header("location: ./errors&success.php?error=formdata");
+                        header("location: ./errors&success.php?error=formdata");
                     }
                     mysqli_stmt_close($stmt); //close statement
                     mysqli_close($conn); //close connection
