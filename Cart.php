@@ -78,7 +78,7 @@
                 }else{
                     header("location: ./errors&success.php?error=formdata");
                 }
-                    
+            ?>
         </main>
     </body>
 </html>
