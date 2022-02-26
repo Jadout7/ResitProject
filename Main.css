@@ -390,6 +390,7 @@ article{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-right:5px;
   }
 
 .bigBox a{
@@ -401,6 +402,7 @@ article{
     text-decoration: none;
     background-color: #329CE5;
     color:white;
+    padding-right:5px;
 }
 
 /* Errors end */
