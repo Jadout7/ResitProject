@@ -23,6 +23,7 @@
                         echo "<li><a href="Cart.php"><h3>Your Cart</h3></a></li>";
                         echo "<li><a href="History.php"><h3>Order History</h3></a></li>";
                     }
+                    ?>
                 <li><a href="Login.php"><h3>Login</h3></a></li>
                 <li><a href="Register.php"><h3>Register</h3></a></li>
                 </ul>
