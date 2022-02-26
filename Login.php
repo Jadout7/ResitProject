@@ -14,6 +14,7 @@
       include 'header.php';
       if(isset($_SESSION['sessionID'])) {
         header('location:./errors&success.php?error=login');
+        header('location:./Main.php');
       }
       ?>
         <main>
