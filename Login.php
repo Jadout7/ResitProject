@@ -79,7 +79,7 @@
                                       setcookie('token', $token, $hour);
                                     }
                                 }
-                                header("location:./index.php?success=login");
+                                header("location:./Main.php?success=login");
                               }
                           }else {
                               $error = "Incorrect password!";
