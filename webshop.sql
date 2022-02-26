@@ -43,7 +43,7 @@ CREATE TABLE `ordereditem` (
 --
 
 CREATE TABLE `order` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` varchar(20) NOT NULL,
