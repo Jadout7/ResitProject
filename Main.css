@@ -197,7 +197,7 @@ input:active{
     width:140px;
 }
 
-input[type=password], input[type=text]{
+input[type=password], input[type=email]{
   font-size: 1.2em;
   padding: 3px;
   border: 1px solid black;
