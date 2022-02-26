@@ -47,7 +47,7 @@
         <?php
           $error = NULL;
           if(isset($_POST['login'])){
-            if(empty($_POST['email']) && empty($_POST['password'])){
+            if(!empty($_POST['email']) && !empty($_POST['password'])){
               if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //validate email
                 $email = $_POST['email'];
                 $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
