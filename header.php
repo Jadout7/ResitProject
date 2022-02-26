@@ -19,7 +19,7 @@
             <div class="head_right1">
                 <ul>
                     <?php 
-                    if($_GET['error'] == 'login'){
+                    if(isset($_SESSION['sessionID'])) {
                         echo "<li><a href='./Cart.php'><h3>Your Cart</h3></a></li>";
                         if ($_SERVER['PHP_SELF'] != "/Cart.php") {
                             header("location: ./Cart.php");
