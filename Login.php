@@ -13,7 +13,7 @@
       <?php
       include 'header.php';
       if(isset($_SESSION['sessionID'])) {
-        header('location:./index.php?error=login');
+        header('location:./errors&success.php?error=login');
       }
       ?>
         <main>
@@ -79,7 +79,7 @@
                                       setcookie('token', $token, $hour);
                                     }
                                 }
-                                header("location:./Main.php?success=login");
+                                header("location:./errors&success.php?success=login");
                               }
                           }else {
                               $error = "Incorrect password!";
