@@ -50,7 +50,7 @@
             if(!empty($_POST['email']) && !empty($_POST['password'])){
               if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //validate email
                 $email = $_POST['email'];
-                $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
+                $sql = "SELECT 'user_id', firstname, lastname, password, user_type FROM user WHERE email = ?"; //query to insert into database
                 if($stmt = mysqli_prepare($conn, $sql)){ //database parses, compiles, and performs query optimization and stores w/o executing
                   mysqli_stmt_bind_param($stmt, "s", $email); //need to bind values to parameters
                   if(mysqli_stmt_execute($stmt)){ //execute the statement
@@ -65,7 +65,7 @@
                               $_SESSION['email'] = $email;
                               $_SESSION['type'] = $type;
                               if(isset($_POST['rememberLogin'])){
-                                $sql = "UPDATE user set token = ? WHERE user_id = ?";
+                                $sql = "UPDATE user set token = ? WHERE 'user_id' = ?";
                                 if($stmt = mysqli_prepare($conn, $sql)){
                                   $token = time().$id;
                                   mysqli_stmt_bind_param($stmt, "ss", $token, $id);
@@ -75,7 +75,7 @@
                                     }else{
                                       $token = password_hash($token, PASSWORD_DEFAULT);
                                       $hour = time() + 3600 * 24 * 30;
-                                      setcookie('userid', $id, $hour);
+                                      setcookie('user_id', $id, $hour);
                                       setcookie('token', $token, $hour);
                                     }
                                 }
