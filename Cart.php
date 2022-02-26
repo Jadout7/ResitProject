@@ -31,7 +31,7 @@
             <article>
                 <div class="productBox">
                     <?php
-                    echo"<img src=".$image." alt="Product Image"/>";
+                    echo"<img src=".$image."alt="Product Image"/>";
                     echo"<h2>".$title."</h2>";
                     echo"<label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">";
                     echo"<h3>".$pri."</h3>";
