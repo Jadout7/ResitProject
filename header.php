@@ -16,6 +16,16 @@
                 <li><textarea name="textarea" id="textarea" placeholder="Zoeken"></textarea></li>
                 </ul>
             </div>
+            <div class="head_right1">
+                <ul>
+                <li><a href="Login.php"><h3>Login</h3></a></li>
+                </ul>
+            </div>
+            <div class="head_right2">
+                <ul>
+                <li><a href="Register.php"><h3>Register</h3></a></li>
+                </ul>
+            </div>
         </nav>
     </div>
 </header>
