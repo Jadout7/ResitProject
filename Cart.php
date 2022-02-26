@@ -30,32 +30,26 @@
             </div>
             <article>
                 <div class="productBox">
-                    <img src="./resources/<?php$image?>" alt="Product Image"/>
-                    <?php
-                    echo"<h2>".$title."</h2>";
-                    echo"<label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">";
-                    echo"<h3>".$pri."</h3>";
-                    ?>
+                    <img src="./resources/<?php $image ?>" alt="Product Image"/>
+                    <h2><?php $title ?></h2>
+                    <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
+                    <h3><?php $pri ?></h3>
                 </div>
             </article>
             <article>
                 <div class="productBox">
-                    <img src="./resources/<?php$image?>" alt="Product Image"/>
-                    <?php
-                    echo"<h2>".$title."</h2>";
-                    echo"<label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">";
-                    echo"<h3>".$pri."</h3>";
-                    ?>
+                    <img src="./resources/<?php $image ?>" alt="Product Image"/>
+                    <h2><?php $title ?></h2>
+                    <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
+                    <h3><?php $pri ?></h3>
                 </div>
             </article>
             <article>
                 <div class="productBox">
-                    <img src="./resources/<?php$image?>" alt="Product Image"/>
-                    <?php
-                    echo"<h2>".$title."</h2>";
-                    echo"<label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">";
-                    echo"<h3>".$pri."</h3>";
-                    ?>
+                    <img src="./resources/<?php $image ?>" alt="Product Image"/>
+                    <h2><?php $title ?></h2>
+                    <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
+                    <h3><?php $pri ?></h3>
                 </div>
             </article>
             <div class="total">
@@ -67,6 +61,10 @@
                 <input type="submit" name="update" value="Update">
                 <input type="submit" name="check" value="Checkout">
             </div>
+        <?php 
+            }
+        ?>
+
         </main>
     </body>
 </html>
