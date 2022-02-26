@@ -25,11 +25,11 @@
                 <div class="form">
                   <form method="post" action="">
                     <div>
-                        <label id='email'>email</label>
+                        <label for='email'>email</label>
                         <input type="text" name="email" class="field">
                     </div>
                     <div>
-                        <label id='password'>Password</label>
+                        <label for='password'>Password</label>
                         <input type="password" name="password" class="field">
                     </div>
                     <div>
