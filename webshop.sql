@@ -33,7 +33,7 @@ CREATE TABLE `ordereditem` (
   `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE `item` (
   `title` varchar(50) NOT NULL,
   `description` varchar(300) NOT NULL,
   `category` varchar(20) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
   `image` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
