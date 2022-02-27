@@ -64,7 +64,7 @@
                               $_SESSION['lastname'] = $lastname;
                               $_SESSION['sessionID'] = $id;
                               $_SESSION['email'] = $email;
-                              $_SESSION['user_type'] = $type;
+                              $_SESSION['type'] = $type;
                               if(isset($_POST['rememberLogin'])){
                                 $sql = "UPDATE user set token = ? WHERE 'user_id' = ?";
                                 if($stmt = mysqli_prepare($conn, $sql)){
