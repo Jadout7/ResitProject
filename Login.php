@@ -56,8 +56,8 @@
                   if(mysqli_stmt_execute($stmt)){ //execute the statement
                     mysqli_stmt_bind_result($stmt, $id, $firstname, $lastname, $password, $type); //bind results
                     mysqli_stmt_store_result($stmt);
-                    header("location:./errors&success.php?success=login");
                     if(mysqli_stmt_num_rows($stmt) != 0){
+                      header("location:./errors&success.php?success=login");
                         while(mysqli_stmt_fetch($stmt)){
                           if(password_verify($_POST['password'], $password)) { //verify password
                               $_SESSION['firstname'] = $firstname; //set session variables to use across pages
@@ -86,7 +86,7 @@
                           }
                         }
                     }else {
-                      $error = "Incorrect email!";
+                      $error = "<br>&nbsp;&nbsp;Unregistered email!";
                     }
                   }else {
                       echo "Error executing query";
