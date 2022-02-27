@@ -2,7 +2,7 @@
 include 'Database.php';
 
 if(isset($_COOKIE['user_id']) && isset($_COOKIE['token'])){
-  $sql = "SELECT user_id, token, firstname, lastname, user_type, email FROM user WHERE user_id = ?";
+  $sql = "SELECT 'user_id', token, firstname, lastname, user_type, email FROM user WHERE 'user_id' = ?";
   if($stmt = mysqli_prepare($conn, $sql)){ //database parses, compiles, and performs query optimization and stores w/o executing
     mysqli_stmt_bind_param($stmt, "s", $_COOKIE['user_id']); //need to bind values to parameters
     if(mysqli_stmt_execute($stmt)){
