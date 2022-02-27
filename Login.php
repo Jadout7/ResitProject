@@ -82,24 +82,24 @@
                                 }
                               }
                           }else {
-                              $error = "Incorrect password!";
+                              $error = "<br>&nbsp;&nbsp;Incorrect password!";
                           }
                         }
                     }else {
                       $error = "<br>&nbsp;&nbsp;Unregistered email!";
                     }
                   }else {
-                      echo "Error executing query";
+                      echo "<br>&nbsp;&nbsp;Error executing query";
                       die(mysqli_error($conn));
                   }
                 }else{
                     die(mysqli_error($conn));
                 }
               }else {
-                  $error = "Invalid email!";
+                  $error = "<br>&nbsp;&nbsp;Invalid email!";
               }
             }else {
-                $error = "Please fill in all the fields!";
+                $error = "<br>&nbsp;&nbsp;Please fill in all the fields!";
             }
             if($error != NULL){ //echo error if the variable has been set
                  echo "<div class='warning'>".$error."</div>";
