@@ -20,16 +20,16 @@
                 <ul>
                     <?php 
                     if(isset($_SESSION['sessionID'])) {
-                        if($_SESSION['user_type'] = 'customer') {
+                        if($_SESSION['type'] = 'customer') {
                             echo "<li><a href='./Cart.php'><h3>Your Cart</h3></a></li>";
                             echo "<li><a href='History.php'><h3>Order History</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>";
                         }
-                        elseif($_SESSION['user_type'] = 'administrator') {
+                        elseif($_SESSION['type'] = 'administrator') {
                             echo "<li><a href='./Add.php'><h3>Add Product</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>";
                         }
-                        elseif($_SESSION['user_type'] = 'orderpicker') {
+                        elseif($_SESSION['type'] = 'orderpicker') {
                             echo "<li><a href='./Orders.php'><h3>Orders</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>"; 
                         }
