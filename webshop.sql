@@ -113,7 +113,7 @@ ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `orderpicker`
 --
 ALTER TABLE `orderpicker`
   ADD PRIMARY KEY (`order_id`);
@@ -141,7 +141,7 @@ ALTER TABLE `item`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `orderpicker`
 --
 ALTER TABLE `orderpicker`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
