@@ -26,12 +26,23 @@ USE `webshop`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ordereditem`
 --
 
 CREATE TABLE `ordereditem` (
-  `id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
+  `order_item_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,11 +50,11 @@ CREATE TABLE `ordereditem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room`
+-- Table structure for table `orderpick`
 --
 
-CREATE TABLE `order` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `orderpick` (
+  `user_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -93,7 +104,7 @@ CREATE TABLE `item` (
 -- Indexes for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`order_item_id`);
 
 --
 -- Indexes for table `item`
@@ -104,7 +115,7 @@ ALTER TABLE `item`
 --
 -- Indexes for table `order`
 --
-ALTER TABLE `order`
+ALTER TABLE `orderpicker`
   ADD PRIMARY KEY (`order_id`);
 
 --
@@ -121,7 +132,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -132,7 +143,7 @@ ALTER TABLE `item`
 --
 -- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `order`
+ALTER TABLE `orderpicker`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
