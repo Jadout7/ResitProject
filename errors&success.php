@@ -26,12 +26,16 @@
             }
         }
         if(isset($_GET['success'])) {
-            if($_GET['success'] == 'login') {
-            echo "<br><p class='success'>&nbsp;&nbsp;You are now logged into the service!</p>";
+            if($_GET['success'] == 'register') {
+                echo "<br><p class='success'>&nbsp;&nbsp;Account has been successfully created!</p>";
+                echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
+                }
+            elseif($_GET['success'] == 'login') {
+            echo "<br><p class='success'>&nbsp;&nbsp;You are now logged in!</p>";
             echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
             }
             elseif($_GET['success'] == 'logout') {
-                echo "<br><p class='warning'>&nbsp;&nbsp;You are now logged out of the service.</p>";
+                echo "<br><p class='warning'>&nbsp;&nbsp;You are now logged out.</p>";
                 echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
               }
             elseif($_GET['success'] == 'ordered_item') {
