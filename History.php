@@ -45,6 +45,9 @@
             <div class="more">
                 <b><u><a href="#">More orders &gt;&gt;</a></u></b>
             </div>
+            <?php
+            $sql="select oi.orderitemid, oi.orderid, oi.productdesc, oi.quantity from orderitems oi where oi.orderid = 1;";
+            ?>
         </main>    
     </body>
 </html>
