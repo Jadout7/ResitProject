@@ -50,10 +50,10 @@ CREATE TABLE `ordereditem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderpick`
+-- Table structure for table `orderpicker`
 --
 
-CREATE TABLE `orderpick` (
+CREATE TABLE `orderpicker` (
   `user_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL,
