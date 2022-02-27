@@ -83,7 +83,7 @@
                                                             if ($stmt = mysqli_prepare($conn, $sql)) {
                                                                 mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $email, $password, $token, $type, $ofage); //bind values to parameters
                                                                 if (mysqli_stmt_execute($stmt)) {
-                                                                    echo "Account created successfully!";
+                                                                    header("location:./errors&success.php?success=register");
                                                                     mysqli_stmt_close($stmt); //close statement
                                                                     mysqli_close($conn); //close connection
                                                                 } else {
