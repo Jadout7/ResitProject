@@ -19,6 +19,11 @@ textarea{
     resize: none;
 }
 
+.warning{
+    margin-top: 1em;
+    color: red;
+  }
+
 /*Main page Start*/
 .head{
     width:100vw;
