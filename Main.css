@@ -24,6 +24,11 @@ textarea{
     color: red;
   }
 
+.success{
+    margin-top: 1em;
+    color: green;
+  }
+  
 /*Main page Start*/
 .head{
     width:100vw;
