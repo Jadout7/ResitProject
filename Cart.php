@@ -10,7 +10,8 @@
         <?php
             include 'header.php';
             include 'Database.php';
-            $sum=0;
+            $subtotal=0;
+            $total=0;
             $sql = "SELECT oi.id, oi.item_id, oi.title, oi.quantity, i.price, i.image;
                 FROM ordereditem oi
                 JOIN user u ON oi.id = u.user_id
@@ -21,7 +22,7 @@
                     if(mysqli_stmt_execute($stmt)) {
                         mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity, $price, $image);
                         mysqli_stmt_store_result($stmt);
-                        $pri=$quantity*$price;
+                        $subtotal=$quantity*$price;
                     }
                 }  
         ?>
@@ -34,7 +35,7 @@
                     <img src="./resources/<?php $image ?>" alt="Product Image"/>
                     <h2><?php $title ?></h2>
                     <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
-                    <h3><?php $pri ?></h3>
+                    <h3><?php $subtotal ?></h3>
                 </div>
             </article>
             <article>
@@ -42,7 +43,7 @@
                     <img src="./resources/<?php $image ?>" alt="Product Image"/>
                     <h2><?php $title ?></h2>
                     <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
-                    <h3><?php $pri ?></h3>
+                    <h3><?php $subtotal ?></h3>
                 </div>
             </article>
             <article>
@@ -50,12 +51,13 @@
                     <img src="./resources/<?php $image ?>" alt="Product Image"/>
                     <h2><?php $title ?></h2>
                     <label for="amount"><b>Amount</b>&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="amount" id="amount">
-                    <h3><?php $pri ?></h3>
+                    <h3><?php $subtotal ?></h3>
                 </div>
             </article>
             <div class="total">
                 <?php
-                echo"<h2>Total:" .$pri. "</h2>";
+                $total+=$subtotal
+                echo"<h2>Total:" .$total. "</h2>";
                 ?>
             </div>
             <div class="UandC">
