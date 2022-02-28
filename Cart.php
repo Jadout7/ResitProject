@@ -12,19 +12,40 @@
             include 'Database.php';
             $subtotal=0;
             $total=0;
-            $sql = "SELECT oi.id, oi.item_id, oi.title, oi.quantity, i.price;
+            $user_id=$_SESSION['user_id'];
+            $sql = "SELECT oi.order_item_id, oi.order_id, oi.title, oi.quantity;
                 FROM ordereditem oi
-                JOIN user u ON oi.id = u.user_id
-                JOIN item i ON oi.item_id = i.item_id
-                WHERE u.user_id=?;";
+                JOIN order o ON oi.order_id = o.order_id
+                WHERE o.user_id=?;";
                 if($stmt = mysqli_prepare($conn, $sql)) {
-                    mysqli_stmt_bind_param($stmt, "i", $_SESSION['sessionID']);
+                    mysqli_stmt_bind_param($stmt, "i", $user_id);
                     if(mysqli_stmt_execute($stmt)) {
-                        mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity, $price);
+                        mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity);
                         mysqli_stmt_store_result($stmt);
                         $subtotal=$quantity*$price;
                     }
                 }  
+                /*if(!empty($_POST["quantity"])) {
+			$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");
+			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["image"]));
+			
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["code"] == $k) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}*/
         ?>
         <main>
             <div class="mainTitle">
@@ -66,7 +87,7 @@
             </div>
             <?php
                 if(isset($_POST['Checkout'])){
-                    $sql = "INSERT INTO ordereditem (item_id, title, quantity) VALUES (?,?,?);";
+                    $sql = "INSERT INTO ordereditem (order_id, title, quantity) VALUES (?,?,?);";
                     if($stmt = mysqli_prepare($conn, $sql)){
                         mysqli_stmt_bind_param($stmt, "sss", $_SESSION['sessionID'], $item_id, $title, $quantity);
                         if(!mysqli_stmt_execute($stmt)){
