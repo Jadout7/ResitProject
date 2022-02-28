@@ -32,9 +32,6 @@
                         <label for='password'>Password</label>
                         <input type="password" name="password" class="field">
                     </div>
-                    <div>
-                        <input type="checkbox" name="RemMe" value="RemMe"> Remember Me
-                    </div>
                     <div class='log'>
                         <input type="submit" name="login" value="Login">
                         <a href='Register.php'>Register</a>
@@ -57,7 +54,6 @@
                     mysqli_stmt_bind_result($stmt, $id, $firstname, $lastname, $password, $type); //bind results
                     mysqli_stmt_store_result($stmt);
                     if(mysqli_stmt_num_rows($stmt) != 0){
-                      header("location:./errors&success.php?success=login");
                         while(mysqli_stmt_fetch($stmt)){
                           if(password_verify($_POST['password'], $password)) { //verify password
                               $_SESSION['firstname'] = $firstname; //set session variables to use across pages
@@ -65,22 +61,7 @@
                               $_SESSION['sessionID'] = $id;
                               $_SESSION['email'] = $email;
                               $_SESSION['type'] = $type;
-                              if(isset($_POST['rememberLogin'])){
-                                $sql = "UPDATE user set token = ? WHERE 'user_id' = ?";
-                                if($stmt = mysqli_prepare($conn, $sql)){
-                                  $token = time().$id;
-                                  mysqli_stmt_bind_param($stmt, "ss", $token, $id);
-                                    if(!mysqli_stmt_execute($stmt)){ //execute the statement
-                                      $error = "Error executing query" . mysqli_error($conn);
-                                      die();
-                                    }else{
-                                      $token = password_hash($token, PASSWORD_DEFAULT);
-                                      $hour = time() + 3600 * 24 * 30;
-                                      setcookie('user_id', $id, $hour);
-                                      setcookie('token', $token, $hour);
-                                    }
-                                }
-                              }
+                              header("location:./errors&success.php?success=login");
                           }else {
                               $error = "<br>&nbsp;&nbsp;Incorrect password!";
                           }
