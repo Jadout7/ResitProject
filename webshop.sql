@@ -73,8 +73,7 @@ CREATE TABLE `user` (
   `lastname` varchar(64) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `token` varchar(255),
-  `user_type` varchar(64) NOT NULL default 'customer',
+  `user_type` varchar(64) NOT NULL,
   `ofage` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
