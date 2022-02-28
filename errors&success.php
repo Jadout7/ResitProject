@@ -39,7 +39,7 @@
                 echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
               }
             elseif($_GET['success'] == 'ordered_item') {
-            echo "<br><p class='success'>&nbsp;&nbsp;Item(s) ordered successfully!</p>";
+            echo "<br><p class='success'>&nbsp;&nbsp;Item(s) added to cart successfully!</p>";
             echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
             }
         }
