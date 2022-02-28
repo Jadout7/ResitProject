@@ -12,7 +12,7 @@
             include 'Database.php';
             $subtotal=0;
             $total=0;
-            $sql = "SELECT oi.id, oi.item_id, oi.title, oi.quantity, i.price, i.image;
+            $sql = "SELECT oi.id, oi.item_id, oi.title, oi.quantity, i.price;
                 FROM ordereditem oi
                 JOIN user u ON oi.id = u.user_id
                 JOIN item i ON oi.item_id = i.item_id
@@ -20,7 +20,7 @@
                 if($stmt = mysqli_prepare($conn, $sql)) {
                     mysqli_stmt_bind_param($stmt, "i", $_SESSION['sessionID']);
                     if(mysqli_stmt_execute($stmt)) {
-                        mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity, $price, $image);
+                        mysqli_stmt_bind_result($stmt, $id, $item_id, $title, $quantity, $price);
                         mysqli_stmt_store_result($stmt);
                         $subtotal=$quantity*$price;
                     }
