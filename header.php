@@ -2,7 +2,6 @@
 <header>
     <?php
         session_start();
-        require_once 'RememberMe.php'
     ?>
     <div class="head">
         <nav>
