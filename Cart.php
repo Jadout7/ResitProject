@@ -56,8 +56,8 @@
             </article>
             <div class="total">
                 <?php
-                $total+=$subtotal
-                echo"<h2>Total:" .$total. "</h2>";
+                $total+=$subtotal;
+                echo "<h2>Total:" .$total. "</h2>";
                 ?>
             </div>
             <div class="UandC">
