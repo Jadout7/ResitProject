@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="Main.css" type="text/css">
 <header>
     <?php
-        session_start();
+        require_once 'Remember.php'
     ?>
     <div class="head">
         <nav>
@@ -18,17 +18,18 @@
             <div class="head_right1">
                 <ul>
                     <?php 
-                    if(isset($_SESSION['sessionID'])) {
-                        if($_SESSION['type'] = 'customer') {
+                    if(isset($_SESSION['user_type'])) {
+                        echo"<li><a><h6>Logged in as: <br>".$_SESSION['user_type']."</h6></a></li>";
+                        if($_SESSION['user_type'] = 'customer') {
                             echo "<li><a href='./Cart.php'><h3>Your Cart</h3></a></li>";
                             echo "<li><a href='History.php'><h3>Order History</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>";
                         }
-                        elseif($_SESSION['type'] = 'administrator') {
-                            echo "<li><a href='./Add.php'><h3>Add Product</h3></a></li>";
+                        elseif($_SESSION['user_type'] = 'administrator') {
+                            echo "<li><a href='./Create.php'><h3>Add Product</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>";
                         }
-                        elseif($_SESSION['type'] = 'orderpicker') {
+                        elseif($_SESSION['user_type'] = 'orderpicker') {
                             echo "<li><a href='./Orders.php'><h3>Orders</h3></a></li>";
                             echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>"; 
                         }
