@@ -49,6 +49,7 @@
                         </form>
                         <div>
                             <?php
+                            $conn = mysqli_connect("localhost", "root", "", "webshop");
                             $error = NULL;
                             if (isset($_POST['register'])) {
                                 if (!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) { //check if all fields are filled
@@ -71,17 +72,17 @@
                                                                 $type = "customer";
                                                             }
                                                             if (($_POST['age']) == 'ofAge') {
-                                                                $ofage = "yes";
+                                                                $ofage = "1";
                                                             } else {
-                                                                $ofage = "no";
+                                                                $ofage = "0";
                                                             }
                                                             $firstName = $_POST['firstName'];
                                                             $lastName = $_POST['lastName'];
                                                             $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //hash password
                                                             $token = hash('sha256', time() . $email);
-                                                            $sql = "INSERT INTO user (firstname, lastname, email, password, token, user_type, ofage) VALUES (?,?,?,?,?,?,?)"; //the query for inserting into the database
+                                                            $sql = "INSERT INTO user (firstname, lastname, email, password, user_type, ofage) VALUES (?,?,?,?,?,?)"; //the query for inserting into the database
                                                             if ($stmt = mysqli_prepare($conn, $sql)) {
-                                                                mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $email, $password, $token, $type, $ofage); //bind values to parameters
+                                                                mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $email, $password, $type, $ofage); //bind values to parameters
                                                                 if (mysqli_stmt_execute($stmt)) {
                                                                     header("location:./errors&success.php?success=register");
                                                                     mysqli_stmt_close($stmt); //close statement
