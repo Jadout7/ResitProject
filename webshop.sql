@@ -89,7 +89,7 @@ CREATE TABLE `item` (
   `description` varchar(300) NOT NULL,
   `category` varchar(20) NOT NULL,
   `price` int(11) NOT NULL,
-  `image` VARBINARY(MAX) DEFAULT NULL
+  `image` VARBINARY(8000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
