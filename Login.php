@@ -60,7 +60,7 @@
                               $_SESSION['lastname'] = $lastname;
                               $_SESSION['sessionID'] = $id;
                               $_SESSION['email'] = $email;
-                              $_SESSION['type'] = $type;
+                              $_SESSION['user_type'] = $type;
                               header("location:./errors&success.php?success=login");
                           }else {
                               $error = "<br>&nbsp;&nbsp;Incorrect password!";
