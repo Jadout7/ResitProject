@@ -30,7 +30,7 @@
                         elseif($_SESSION['user_type'] == 'customer'){
                             echo "<li><a href='./Products.php'><h3>Products</h3></a></li>";
                             echo "<li><a href='./Cart.php'><h3>Cart</h3></a></li>";
-                            echo "<li><a href='./Discount.php'><h3>Order History</h3></a></li>";
+                            echo "<li><a href='./History.php'><h3>Order History</h3></a></li>";
                         }
                         echo "<li><a href='./Logout.php'><h3>Logout</h3></a></li>";
                     }
