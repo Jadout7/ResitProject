@@ -8,17 +8,17 @@
     </head>
     <body>
     <?php
-            include 'header.php';
-        ?>
-        <main>
-            <div class="mainTitle">
-                <h1>Your cart</h1>
-            </div>
+        include 'header.php';
+    ?>
+    <main>
+        <div class="mainTitle">
+            <h1>Your cart</h1>
+        </div>
         <?php
             include 'Database.php';
+            $user_id=3;
             $subtotal=0;
             $total=0;
-            $user_id=1;
             $sql = "select i.image, i.title, oi.quantity, i.price
                 FROM item i
                 JOIN ordereditem oi ON oi.order_item_id = i.item_id
@@ -27,33 +27,31 @@
                 if($stmt = mysqli_prepare($conn, $sql)) {
                     mysqli_stmt_bind_param($stmt, "i", $user_id);
                     if(mysqli_stmt_execute($stmt)) {
-                        mysqli_stmt_bind_result($stmt, $image, $title, $quantity, $price);
-                        mysqli_stmt_store_result($stmt);
-                        while($attr=mysqli_stmt_fetch($stmt)) {
-                        $subtotal=$quantity*$price;
-                        $total+=$subtotal;
+                        $result = mysqli_stmt_get_result($stmt);
+                        while($attr=mysqli_fetch_assoc($result)) {
+                            $subtotal=$attr['quantity']*$attr['price'];
+                            $total+=$subtotal;
         ?>
-            <article>
-                <div class="productBox">
-                    <img src="<?php $attr['Pimage'] ?>" alt="Product Image"/>
-                    <p><?php $attr['Ptitle'] ?></p>
-                    <p><?php $attr['Pquantity'] ?></p>
-                    <p><?php $subtotal ?></p>
-                    <p><?php echo "<h2>Subtotal:" .$subtotal. "</h2>";?>
-                </div>
-            </article>
-            <?php
-                        }
+        <article>
+            <div class="productBox">
+                <img src="<?php echo $attr['image'] ?>" alt="Product Image">
+                <h2><?php echo"Product : " .$attr['title']; ?></h2>
+                <h3><?php echo"Quantity : " .$attr['quantity']; ?></h3>
+                <h3><?php echo "<h2>Subtotal : &euro; " .$subtotal. "</h2>";?></h3>
+            </div>
+        </article>
+        <?php
                     }
                 }
-	        ?>
-            <div class="total">
-                <?php echo "<h2>Total:" .$total. "</h2>"; ?>
-            </div>
-            <div class="UandC">
-                <input type="submit" name="update" value="Update">
-                <input type="submit" name="check" value="Checkout">
-            </div>
+            }
+	    ?>
+        <div class="total">
+            <?php echo "<h2>Total: &euro; " .$total. "</h2>"; ?>
+         </div>
+        <div class="UandC">
+            <input type="submit" name="update" value="Update">
+            <input type="submit" name="check" value="Checkout">
+        </div>
         </main>
     </body>
 </html>
