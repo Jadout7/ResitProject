@@ -37,7 +37,6 @@
                         echo "<li><a href='Login.php'><h3>Login</h3></a></li>";
                         echo "<li><a href='Register.php'><h3>Register</h3></a></li>";
                     }
-                    
                     ?>
                 </ul>
             </div>
