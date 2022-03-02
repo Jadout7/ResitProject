@@ -431,10 +431,6 @@ main{
     border: 1px solid black 
 }
 
-.article_product:last-child{
-    grid-column: 4/5;
-}
-
 .article_product:hover{
     background-color: #bdc3c7;
     cursor:pointer;
