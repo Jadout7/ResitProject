@@ -9,14 +9,23 @@
     <body>
         <?php
             include 'header.php';
+            include 'Database.php';
         ?>
         <main class="orderPickerTable">
             <div class="orderPickerGreetings">
                 <h1>Hello <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] . "!"; ?></h1>
             </div>
             <div>
-                <p>All orders:</p>
-                <table border="1px">
+                <p class="orderPickerText">Total orders:
+                    <?php
+                    $query = "SELECT * from orderpicker";
+                    $result = mysqli_query($conn, $query);
+                    $rowcount = mysqli_num_rows( $result );  // Return the number of rows in the table
+                    echo $rowcount;
+                    ?>
+                </p>
+                <p class="orderPickerText">All orders:</p>
+                <table>
                     <thead>
                     <tr>
                         <th>First name</th>
@@ -30,7 +39,6 @@
                     </thead>
                     <tbody>
                         <?php
-                            include 'Database.php';
                             $sql = "SELECT user.firstname, user.lastname, orderpicker.user_id, orderpicker.order_id, orderpicker.order_date, orderpicker.status, orderpicker.track_code FROM user LEFT JOIN orderpicker ON (user.user_id = orderpicker.user_id)"; // query select statement
                             $result = mysqli_query($conn, $sql) or die(mysqli_error());
                             while($row=mysqli_fetch_array($result)){   // fetches a result row as an array
