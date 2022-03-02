@@ -419,3 +419,29 @@ article{
 }
 
 /* Errors end */
+
+/*Product page*/
+
+main{
+    margin: 0 53px;
+}
+
+article{
+    display: grid;
+    grid-template-columns: 232px 232px 232px 232px;
+}
+
+.article_product{
+    padding:10px;
+    margin: 20px 10px 0px 0px;
+    border: 1px solid black 
+}
+
+.article_product:last-child{
+    grid-column: 4/5;
+}
+
+.article_product:hover{
+    background-color: #bdc3c7;
+    cursor:pointer;
+}
