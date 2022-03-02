@@ -417,7 +417,7 @@ article{
 
 /* Errors end */
 
-/*Product page*/
+/* Product page start */
 
 main{
     display: flex;
@@ -444,3 +444,27 @@ article{
     background-color: #bdc3c7;
     cursor:pointer;
 }
+
+/* Product page end */
+
+/* Order picker page start*/
+
+.orderPickerTable {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.orderPickerGreetings {
+    margin-bottom: 70px;
+
+}
+
+.orderPickerTable p:nth-of-type(1) {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Order picker page end */
