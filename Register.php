@@ -57,7 +57,7 @@
                                         if (strlen(trim($_POST['password'])) > 6) { //check if the password is longer than 6 char.
                                             $email = $_POST["email"];
                                             if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //validate the email format
-                                                $sql = "SELECT email FROM user WHERE email = ?"; //query command to search if email already exists
+                                                $sql = "SELECT email FROM user WHERE email = ?"; //query to search if email already exists
                                                 if($stmt = mysqli_prepare($conn, $sql)) {
                                                     mysqli_stmt_bind_param($stmt, "s", $_POST['email']);
                                                     if (mysqli_stmt_execute($stmt)) {
@@ -79,7 +79,6 @@
                                                             $firstName = $_POST['firstName'];
                                                             $lastName = $_POST['lastName'];
                                                             $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //hash password
-                                                            $token = hash('sha256', time() . $email);
                                                             $sql = "INSERT INTO user (firstname, lastname, email, password, user_type, ofage) VALUES (?,?,?,?,?,?)"; //the query for inserting into the database
                                                             if ($stmt = mysqli_prepare($conn, $sql)) {
                                                                 mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $email, $password, $type, $ofage); //bind values to parameters
@@ -88,38 +87,35 @@
                                                                     mysqli_stmt_close($stmt); //close statement
                                                                     mysqli_close($conn); //close connection
                                                                 } else {
-                                                                    $error = "Error: " . mysqli_error($conn);
-                                                                    die(); //die if we cant execute statement
+                                                                    echo "Error: " . mysqli_error($conn);
+                                                                    die();
                                                                 }
                                                             } else {
-                                                                $error = "Error: " . mysqli_error($conn);
-                                                                die(); //die if statement can't be prepared
+                                                                echo "Error: " . mysqli_error($conn);
+                                                                die();
                                                             }
                                                         } else {
-                                                            $error = "Email already exists.";
+                                                            echo "Email already exists.";
                                                         }
                                                     } else {
-                                                        $error = "Error executing query" . mysqli_error($conn);
+                                                        echo "Error executing query" . mysqli_error($conn);
                                                         die();
                                                     }
                                                 }else {
-                                                    $error = "Error executing query" . mysqli_error($conn);
+                                                    echo "Error executing query" . mysqli_error($conn);
                                                     die();
                                                 }
                                             }else {
-                                                $error = "Invalid email.";
+                                                echo "Invalid email.";
                                             }
                                         }else {
-                                            $error = "Password must be longer than 6 characters!";
+                                            echo "Password must be longer than 6 characters!";
                                         }
                                     }else{
-                                        $error = "Passwords don't match!";
+                                        echo "Passwords don't match!";
                                     }
                                 }else{
-                                    $error = "Please fill in all fields!";
-                                }
-                                if($error != NULL){ //echo error if the variable has been set
-                                    echo $error;
+                                    echo "Please fill in all fields!";
                                 }
                             }
                             ?>
