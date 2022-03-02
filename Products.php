@@ -21,7 +21,9 @@
             <p><?php echo $attr['description'] ?></p>
             <p><b><i><?php echo $attr['category'] ?></i></b></p>
             <h4><?php echo "Price: &euro;" .$attr['price']. ".00" ?></h4>
-            <p><input type="submit" value="Add to Cart">
+            <div class = 'log'>
+                <input type="submit" value="Add to Cart">
+            </div>
         </div>
     </article>
     <?php
