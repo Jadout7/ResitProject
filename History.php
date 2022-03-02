@@ -12,39 +12,38 @@
     ?>
     <main>
         <div class="mainTitle">
-            <h1>Your order history</h1>
+            <h1>Order history</h1>
         </div>
         <?php
-        $user_id=1;
-        $subtotal=0;
-        $total=0;
-            $sql = "select distinct o.order_id, i.price, oi.quantity
-                FROM item i
-                JOIN ordereditem oi ON oi.order_item_id = i.item_id
-                JOIN orders o ON oi.order_id = o.order_id
-                WHERE o.user_id=?;";
-                if($stmt = mysqli_prepare($conn, $sql)) {
-                    mysqli_stmt_bind_param($stmt, "i", $user_id);
-                    if(mysqli_stmt_execute($stmt)) {
-                        mysqli_stmt_bind_result($stmt, $id, $price, $quantity);
-                        mysqli_stmt_store_result($stmt);
-                        while($attr=mysqli_stmt_fetch($stmt)) {
-                            $subtotal=$quantity*$price;
-                            $total+=$subtotal;
-                            
+            include 'Database.php';
+            $user_id = 3;
+            $subtotal=0;
+            $total=0;
+                $sql = "select o.order_id, i.price, oi.quantity
+                    FROM item i
+                    JOIN ordereditem oi ON oi.order_item_id = i.item_id
+                    JOIN orders o ON oi.order_id = o.order_id
+                    WHERE o.user_id=?;";
+                    if($stmt = mysqli_prepare($conn, $sql)) {
+                        mysqli_stmt_bind_param($stmt, "i", $user_id);
+                        if(mysqli_stmt_execute($stmt)) {
+                            $result = mysqli_stmt_get_result($stmt);
+                            while($attr=mysqli_fetch_assoc($result)) {
+                                $subtotal=$attr['quantity']*$attr['price'];
+                                $total+=$subtotal;             
         ?>
-            <article>
-                <div class="orderBox">
-                    <p>Order Number: <?php $attr['order_id']?></p>
-                    <h3>Total price: <?php echo"&euro;" .$total ?></h3>
-                    <a href="#">Order details &gt;&gt;</a>
-                </div>
-            </article>
-        </main>    
+        <article>
+            <div class="orderBox">
+                <h2>Order Number: <?php echo $attr['order_id']; ?></h2>
+                <h3>Total price: <?php echo "&euro;" .$total; ?></h3>
+                <a href="#">Order details &gt;&gt;</a>
+           </div>
+        </article>
         <?php
                     }
                 }
             }
-	    ?>
+        ?>
+        </main>    
     </body>
 </html>
