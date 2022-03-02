@@ -19,7 +19,6 @@
                 <ul>
                     <?php 
                     if(isset($_SESSION['user_type'])) {
-                        echo"<li><a><h6>Logged in as: <br>".$_SESSION['user_type']."</h6></a></li>";
                         if($_SESSION['user_type'] == 'administrator') {
                             echo "<li><a href='./Create.php'><h3>Add Product</h3></a></li>";
                             echo "<li><a href='./Discount.php'><h3>Create Discount</h3></a></li>";
