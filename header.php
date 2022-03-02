@@ -22,7 +22,6 @@
                         if($_SESSION['user_type'] == 'administrator') {
                             echo "<li><a href='./Create.php'><h3>Add Product</h3></a></li>";
                             echo "<li><a href='./Discount.php'><h3>Create Discount</h3></a></li>";
-                            echo "<li><a href='./Products.php'><h3>Products</h3></a></li>";
                         }
                         elseif($_SESSION['user_type'] == 'orderpicker') {
                             echo "<li><a href='./Orders.php'><h3>Orders</h3></a></li>";
