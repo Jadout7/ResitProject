@@ -37,7 +37,7 @@
                 <img src="<?php echo $attr['image'] ?>" alt="Product Image">
                 <h2><?php echo"Product : " .$attr['title']; ?></h2>
                 <h3><?php echo"Quantity : " .$attr['quantity']; ?></h3>
-                <h3><?php echo "<h2>Subtotal : &euro; " .$subtotal. "</h2>";?></h3>
+                <h3><?php echo "Subtotal : &euro; " .$subtotal;?></h3>
             </div>
         </article>
         <?php
