@@ -11,7 +11,7 @@ p{
 }
 
 body{
-    width:100%;
+    width:100vw;
     margin:0 auto;
 }
 
@@ -31,7 +31,7 @@ textarea{
   
 /*Main page Start*/
 .head{
-    width:100vw;
+    width:100%;
     background-color: #329CE5;
     height:55px;
     display:grid;
@@ -228,22 +228,20 @@ input[type=password], input[type=text]{
 .mainTitle{
     color:Black;
     margin: 50px 0 0 0;
-    padding-left: 300px;
 }
 
 article{
     display:grid;
     grid-template-rows: 130px;
     width:80%;
-    padding-left:300px;
+    margin-left:180px;
 }
 
 .productBox{
     padding-top:20px;
     display: flex;
     align-items: center;
-    align-content: space-between;
-    width: 100%;
+    align-content: space-between;   
     max-width: 1024px;
     margin: 10px auto;
     background-color:gainsboro;
@@ -282,7 +280,7 @@ article{
 .total{
     display:flex;
     justify-content: flex-end;
-    padding-left:10px;
+    padding-left:1200px;
     padding-right: 320px;
     margin:40px 0 0 0;
 }
@@ -290,7 +288,7 @@ article{
 .UandC{
     display:grid;
     grid-template-columns: 140px 140px;
-    padding-left:930px;
+    padding-left:750px;
     margin:30px;
 }
 
@@ -309,8 +307,7 @@ article{
     display: flex;
     align-items: center;
     align-content: space-between;
-    width: 100%;
-    max-width: 1024px;
+    max-width: 100%;
     margin: 10px auto;
     background-color:gainsboro;
 }
@@ -322,7 +319,7 @@ article{
 }
 
 .orderBox h3{
-    padding-left:150px;
+    padding-left:1000px;
     padding-bottom:15px;
 }
 
@@ -423,7 +420,9 @@ article{
 /*Product page*/
 
 main{
-    margin: 0 53px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 article{
