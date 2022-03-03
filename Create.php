@@ -81,10 +81,10 @@
                         <input type="text" name="price" class="field">
                     </div>
                     <div>
-                    <img src/>
-                    <label for='image'><span>Select Image</span><br>
+                        <img src/>
+                        <label for='image'><span>Select Image</span><br>
                         <input type="file" name="image" class="field">
-                    </label>
+                        </label>
                     </div>
                     <div class='log'>
                         <input type="submit" name="create" value="Create Product">
