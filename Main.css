@@ -475,3 +475,28 @@ main{
 /* Order picker page end */
 
 
+.orderBy{
+    padding-top:20px;
+}
+
+.orderBy select{
+    padding-left:45px;
+    height:40px;
+    width:200px;
+}
+
+.sort{
+    padding-top:20px;
+    padding-left:40px;
+}
+
+.sort input[type=submit]{
+    align-items:center;
+    height: 35px;
+    background-color: #329CE5;
+    padding: 6px 10px;
+    border-style: none;
+    color: white;
+    font-weight:700;
+    width:110px;
+}
