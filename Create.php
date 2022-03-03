@@ -17,7 +17,7 @@
         include 'Database.php';
         if(isset($_POST['create'])){
             if(!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
-                if($_FILES['image']['size']<30000000 && strlen($_FILES['image']['name'])<=50){
+                if($_FILES['image']['size']<2500000 && strlen($_FILES['image']['name'])<=35){
                     $FT=["image/png","image/jpeg","image/jpg"];
                     $UFT=finfo_file(finfo_open(FILEINFO_MIME_TYPE),$_FILES['image']['tmp_name']);
                     if(in_array($UFT,$FT)){
