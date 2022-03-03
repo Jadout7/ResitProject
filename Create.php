@@ -73,25 +73,30 @@
                     <form method="post" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
                     <div>
                         <label for='title'>Product Title</label>
-                        <input type="text" name="title" class="field">
+                        <input type="text" name="title">
                     </div>
                     <div>
                         <label for='desc'>Product Description</label>
-                        <input type="text" name="desc" class="field">
+                        <input type="text" name="desc">
                     </div>
                     <div>
                         <label for='cat'>Category</label>
-                        <input type="text" name="cat" class="field">
+                        <input type="text" name="cat">
                     </div>
                     <div>
                         <label for='price'>Price</label>
-                        <input type="text" name="price" class="field">
+                        <input type="text" name="price">
                     </div>
                     <div>
                         <img src/>
                         <label for='image'><span>Select Image</span><br>
-                        <input type="file" name="image" class="field">
+                        <input type="file" name="image">
                         </label>
+                    </div>
+                    <div>
+                        <label for="ageplus">Is this item 18+?</label>
+                        <input type="radio" name="ageplus" value="Yes">&nbsp;Yes<br/>
+                        <input type="radio" name="ageplus" value="No">&nbsp;Yes<br/>
                     </div>
                     <div class='log'>
                         <input type="submit" name="create" value="Create Product">
