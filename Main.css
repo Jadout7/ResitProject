@@ -13,6 +13,7 @@ p{
 body{
     width:100%;
     margin:0 auto;
+    align-items:center;
 }
 
 textarea{
@@ -232,8 +233,13 @@ input[type=password], input[type=text]{
 
 article{
     margin-top:15px;
+    align-items:center;
     display:grid;
-    width:80%;
+}
+
+.articleproducts{
+     align-items: center;
+     width:40%;
 }
 
 .productBox{
@@ -242,8 +248,7 @@ article{
     display: flex;
     align-items: center;
     justify-content: space-between;   
-    height: 120px;
-    width:80%;
+    width:100%;
     margin: 10px auto;
     background-color:gainsboro;
 }
@@ -272,7 +277,7 @@ article{
 .total{
     display:flex;
     justify-content: flex-end;
-    padding-left:990px;
+    padding-left:1100px;
     padding-right: 150px;
     margin:40px 0 0 0;
 }
@@ -280,7 +285,7 @@ article{
 .UandC{
     display:grid;
     grid-template-columns: 140px 140px;
-    padding-left:720px;
+    padding-left:830px;
     margin:30px;
 }
 
@@ -295,7 +300,6 @@ article{
 }
 
 .orderBox{
-    width:74%;
     height:120px;
     padding-top:20px;
     display: flex;
@@ -421,7 +425,7 @@ main{
 
 .article_product{
     padding:10px;
-    height: 450px;
+    text-align: center;
     margin: 20px 0px 0px 0px;
     border: 1px solid black 
 }
