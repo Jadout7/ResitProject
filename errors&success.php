@@ -48,6 +48,10 @@
                 echo "<p class='warning'>File name must not exceed 35 Characters.</p>";
                 echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
             }
+            elseif($_GET['error'] == 'price'){
+                echo "Maximum price for an item is &euro;9999";
+                echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
+            }
         }
         if(isset($_GET['success'])) {
             if($_GET['success'] == 'register') {
