@@ -16,7 +16,7 @@
     ?>
     <article>
         <div class = 'article_product'>
-            <img src = "<?php $attr['image']?>" alt = "Product Image">
+            <img src = "./upload/<?php $attr['image']?>" alt = "Product Image">
             <h4><?php echo $attr['title'] ?></h4>
             <p><?php echo $attr['description'] ?></p>
             <p><b><i><?php echo $attr['category'] ?></i></b></p>
