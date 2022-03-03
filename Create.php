@@ -17,7 +17,6 @@
         include 'Database.php';
         if(isset($_POST['create'])){
             if(!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
-                if(strlen($price) > 4){
                     if($_FILES['image']['size']<2500000 && strlen($_FILES['image']['name'])<=35){
                         $fileDimentions = @getimagesize($_FILES["image"]["tmp_name"]);
                         $width = $fileDimentions[0];
@@ -44,9 +43,6 @@
                         echo"Max File Name: 50 Characters<br>";
                         echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
                     }
-                }else{
-                    echo"Maximum price for an item is &euro;9999";
-                }
                 $title = $_POST['title'];
                 $desc = $_POST['desc'];
                 $cat = $_POST['cat'];
