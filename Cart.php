@@ -14,14 +14,15 @@
     <main>
         <div class="mainTitle">
             <h1>Your cart</h1>
-        </div>
-        <div class="orderBy">
-            <select name="orderBy">
-                <option value="PriceAscending">Price Ascending</option>
-                <option value="PriceDescending">Price Descending</option>
-                <option value="NameAscending">Name Ascending</option>
-                <option value="NameDescending">Name Descending</option>
-            </select>
+            <form method="post" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
+            <div class="orderBy">
+                <select name="orderBy">
+                    <option value="PriceAscending">Price Ascending</option>
+                    <option value="PriceDescending">Price Descending</option>
+                    <option value="NameAscending">Name Ascending</option>
+                    <option value="NameDescending">Name Descending</option>
+                </select>
+            </div>
         </div>
         <?php
             $user_id=3;
