@@ -277,7 +277,7 @@ article{
 .total{
     display:flex;
     justify-content: flex-end;
-    padding-left:1100px;
+    padding-left:1000px;
     padding-right: 150px;
     margin:40px 0 0 0;
 }
@@ -285,7 +285,7 @@ article{
 .UandC{
     display:grid;
     grid-template-columns: 140px 140px;
-    padding-left:830px;
+    padding-left:730px;
     margin:30px;
 }
 
