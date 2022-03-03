@@ -18,18 +18,25 @@
         if(isset($_POST['create'])){
             if(!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
                 if($_FILES['image']['size']<2500000 && strlen($_FILES['image']['name'])<=35){
-                    $FT=["image/png","image/jpeg","image/jpg"];
-                    $UFT=finfo_file(finfo_open(FILEINFO_MIME_TYPE),$_FILES['image']['tmp_name']);
-                    if(in_array($UFT,$FT)){
-                        if(!file_exists("./upload/" .$_FILES['image']['name'])){
-                            if(move_uploaded_file($_FILES['image']['tmp_name'],"./upload/" .$_FILES['image']['name'])){
-                                echo"Saved Successfully";
+                    $fileDimentions = @getimagesize($_FILES["uploadedFile"]["tmp_name"]);
+                    $width = $fileDimentions[0];
+                    $height = $fileDimentions[1];
+                    if ($width > "500" && $height > "500") {
+                        $FT=["image/png","image/jpeg","image/jpg"];
+                        $UFT=finfo_file(finfo_open(FILEINFO_MIME_TYPE),$_FILES['image']['tmp_name']);
+                        if(in_array($UFT,$FT)){
+                            if(!file_exists("./upload/" .$_FILES['image']['name'])){
+                                if(move_uploaded_file($_FILES['image']['tmp_name'],"./upload/" .$_FILES['image']['name'])){
+                                    echo"Saved Successfully";
+                                }else{
+                                    header("location:./errors&success.php?error=saving");
+                                    }
                             }else{
-                                header("location:./errors&success.php?error=saving");
-                                } 
-                        }else{
-                            echo "<br><p class='warning'>".$_FILES['image']['name']." already exists.</p>";
+                                echo "<br><p class='warning'>".$_FILES['image']['name']." already exists.</p>";
+                            }
                         }
+                    }else{
+                        echo "Image dimensions can't exceed 500x500!";
                     }
                 }else{
                     echo"Max File Size: 3MB<br>";
