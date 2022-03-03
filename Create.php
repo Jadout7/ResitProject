@@ -104,7 +104,6 @@
                                 }else {
                                     header("location:./errors&success.php?error=price");
                                 }
-                                }
                             }else {
                                 header("location:./errors&success.php?error=missingdata");
                             }
