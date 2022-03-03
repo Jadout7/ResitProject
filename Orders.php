@@ -35,6 +35,7 @@
                         <th>Order date</th>
                         <th>Status</th>
                         <th>Tack & Trace code</th>
+                        <th>Change status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,32 @@
                                         echo $row['track_code'];
                                     }else {
                                         echo "None";
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <form action="" method="post">
+                                <select name="status">
+                                    <option value="received">Order received</option>
+                                    <option value="packed">Is being packed</option>
+                                    <option value="being_shipped">Is being shipped</option>
+                                    <option value="is_shipped">Is shipped</option>
+                                </select>
+                                <button type="submit" value="update">Update</button>
+                                </form>
+                                <?php
+                                    if (isset ($_POST['update'])){
+                                        $query = mysqli_query("UPDATE orderpicker SET status = ? WHERE order_id = ?");
+                                        if ($query = mysqli_prepare($conn, $query)) {
+                                            mysqli_stmt_bind_param($query, "s", $status);
+                                            if (mysqli_stmt_execute($query)) {
+                                                echo "Status changed to" . $status;
+                                            }else{
+                                                echo mysqli_error($conn);
+                                            }
+                                        }else{
+                                            echo mysqli_error($conn);
+                                        }
                                     }
                                 ?>
                             </td>

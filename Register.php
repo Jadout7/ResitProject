@@ -49,8 +49,6 @@
                         </form>
                         <div>
                             <?php
-                            $conn = mysqli_connect("localhost", "root", "", "webshop");
-                            $error = NULL;
                             if (isset($_POST['register'])) {
                                 if (!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) { //check if all fields are filled
                                     if ($_POST['password'] == $_POST['confirmPassword']) { //check if the entered passwords are the same
