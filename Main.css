@@ -269,9 +269,10 @@ article{
     margin-bottom: 20px;
 }
 
-.productBox input{
-    width:4%;
-    margin-left:2px;
+.productBox input[type=number]{
+    height:40px;
+    width:50px;
+    padding-left:10px;
 }
 
 .total{
