@@ -41,9 +41,8 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `ordereditem` (
-  `order_item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

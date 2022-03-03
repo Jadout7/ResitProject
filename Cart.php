@@ -45,7 +45,9 @@
             <div class="productBox">
                 <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image">
                 <h2><?php echo"Product : " .$attr['title']; ?></h2>
+                <form method="post" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
                 <h3>Quantity: <input type="number" name="quantity" min="1" max="100"></h3>
+                </form>
                 <h3><?php echo "Subtotal : &euro; " .$subtotal. ".00";?></h3>
             </div>
         </article>
@@ -55,7 +57,7 @@
             }
 	    ?>
         <div class="total">
-            <?php echo "<h2>Total: &euro; " .$total. "</h2>"; ?>
+            <?php echo "<h2>Total: &euro; " .$total. ".00</h2>"; ?>
          </div>
         <div class="UandC">
             <input type="submit" name="update" value="Update">
