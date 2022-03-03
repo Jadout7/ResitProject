@@ -295,7 +295,7 @@ article{
 }
 
 .orderBox{
-    width:80%;
+    width:74%;
     height:120px;
     padding-top:20px;
     display: flex;
@@ -311,14 +311,14 @@ article{
 }
 
 .orderBox h3{
-    padding-left:250px;
+    padding-left:200px;
     padding-bottom:15px;
 }
 
 .orderBox a{
     padding-bottom:20px;
     margin-right:20px;
-    margin-left: 250px;
+    margin-left: 200px;
     text-decoration: none;
     color:black;
 }
@@ -420,7 +420,7 @@ main{
 
 .article_product{
     padding:10px;
-    height: 155px;
+    height: 145px;
     margin: 20px 10px 0px 0px;
     border: 1px solid black 
 }
@@ -443,7 +443,7 @@ main{
     margin-bottom: 70px;
 }
 
-.orderPickerText, p {
+.orderPickerText p {
     font-size: 25px;
     text-align: center;
     margin-bottom: 10px;
