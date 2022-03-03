@@ -23,7 +23,9 @@
                     <p><b><i><?php echo "Category: " . $attr['category'] ?></i></b></p><br>
                     <h4><?php echo "Price: &euro;" . $attr['price'] . ".00"; ?></h4><br>
                     <div class='log'>
-                        <input type="submit" value="Add to Cart">
+                    <form method="post" action=Add.php enctype="multipart/form-data">
+                        <input type="submit" name="add" value="Add to Cart">
+                    </form>
                     </div>
                 </div>
             </article>
