@@ -19,8 +19,8 @@
             <div class = 'article_product'>
                 <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image"><br><br>
                 <h4><?php echo $attr['title']?></h4><br>
-                <p><?php echo $attr['description'] ?></p><br>
-                <p><b><i><?php echo $attr['category'] ?></i></b></p><br>
+                <p><?php echo "<b>Description: </b>" .$attr['description'] ?></p><br>
+                <p><b><i><?php echo "Category: " .$attr['category'] ?></i></b></p><br>
                 <h4><?php echo "Price: &euro;" .$attr['price']. ".00"; ?></h4><br>
                 <div class = 'log'>
                     <input type="submit" value="Add to Cart">
