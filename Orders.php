@@ -10,6 +10,11 @@
         <?php
             include 'header.php';
             include 'Database.php';
+
+            /* if($_SESSION['user_type'] != 'orderpicker') {
+                include 'errors&success.php';
+                header("location:./errors&success.php?error=type");
+            } */
         ?>
         <main class="orderPickerTable">
             <div class="orderPickerGreetings">
@@ -61,29 +66,34 @@
                                 ?>
                             </td>
                             <td>
-                                <form action="" method="post">
-                                <select name="status">
-                                    <option value="received">Order received</option>
-                                    <option value="packed">Is being packed</option>
-                                    <option value="being_shipped">Is being shipped</option>
-                                    <option value="is_shipped">Is shipped</option>
-                                </select>
-                                <button type="submit" value="update">Update</button>
+                                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+                                    <select name="status">
+                                        <option placeholder="<?php echo $row['status']; ?>"></option>
+                                        <option name="received" value="received">Order received</option>
+                                        <option name="packed" value="packed">Is being packed</option>
+                                        <option name="being_shipped" value="being_shipped">Is being shipped</option>
+                                        <option name="is_shipped" value="is_shipped">Is shipped</option>
+                                    </select>
+                                    <button type="submit" name="update" value="update">Update</button>
                                 </form>
                                 <?php
-                                    if (isset ($_POST['update'])){
-                                        $query = mysqli_query("UPDATE orderpicker SET status = ? WHERE order_id = ?");
-                                        if ($query = mysqli_prepare($conn, $query)) {
-                                            mysqli_stmt_bind_param($query, "s", $status);
-                                            if (mysqli_stmt_execute($query)) {
-                                                echo "Status changed to" . $status;
-                                            }else{
-                                                echo mysqli_error($conn);
-                                            }
-                                        }else{
-                                            echo mysqli_error($conn);
-                                        }
+                                if (isset ($_POST['update'])){
+                                    $status = array("received","packed","being_shipped","is_shipped");
+                                    //$status = $_POST['status'];
+                                    foreach($status as $x){
+                                    if ($status == "received") {
+                                        $x = "Order received";
+                                    }else if ($status == "packed"){
+                                        $status = "Is being packed";
+                                    }else if ($status == "being_shipped"){
+                                        $status = "Is being shipped";
+                                    }else if ($status == "is_shipped"){
+                                        $status = "Is shipped";
                                     }
+                                    //var_dump($status);
+                                    echo $x; }
+                                }
+
                                 ?>
                             </td>
                             <?php
