@@ -8,14 +8,22 @@
     </head>
     <body>
     <?php
+        include 'Database.php';
         include 'header.php';
     ?>
     <main>
         <div class="mainTitle">
             <h1>Your cart</h1>
         </div>
+        <div class="orderBy">
+            <select name="orderBy">
+                <option value="PriceAscending">Price Ascending</option>
+                <option value="PriceDescending">Price Descending</option>
+                <option value="NameAscending">Name Ascending</option>
+                <option value="NameDescending">Name Descending</option>
+            </select>
+        </div>
         <?php
-            include 'Database.php';
             $user_id=3;
             $subtotal=0;
             $total=0;
@@ -52,6 +60,54 @@
             <input type="submit" name="update" value="Update">
             <input type="submit" name="check" value="Checkout">
         </div>
+        <?php
+            if(isset ($_POST['Update'])){
+                if($_POST['orderBy'] == "PriceAscending"){
+                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price asc;");
+                    if ($query = mysqli_prepare($conn, $query)) {
+                        if (mysqli_stmt_execute($query)) {
+                            }else{
+                                echo mysqli_error($conn);
+                            }
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }
+                elseif($_POST['orderBy'] == "PriceDescending"){
+                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price desc;");
+                    if ($query = mysqli_prepare($conn, $query)) {
+                        if (mysqli_stmt_execute($query)) {
+                            }else{
+                                echo mysqli_error($conn);
+                            }
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }
+                elseif($_POST['orderBy'] == "NameAscending"){
+                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title asc;");
+                    if ($query = mysqli_prepare($conn, $query)) {
+                        if (mysqli_stmt_execute($query)) {
+                            }else{
+                                echo mysqli_error($conn);
+                            }
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }
+                elseif($_POST['orderBy'] == "NameDescending"){
+                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title desc;");
+                    if ($query = mysqli_prepare($conn, $query)) {
+                        if (mysqli_stmt_execute($query)) {
+                            }else{
+                                echo mysqli_error($conn);
+                            }
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                }
+            }
+        ?>
         </main>
     </body>
 </html>
