@@ -11,7 +11,7 @@ p{
 }
 
 body{
-    width:100vw;
+    width:100%;
     margin:0 auto;
 }
 
@@ -416,12 +416,13 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom:80px;
 }
 
 .article_product{
     padding:10px;
     height: 145px;
-    margin: 20px 10px 0px 0px;
+    margin: 20px 0px 0px 0px;
     border: 1px solid black 
 }
 
