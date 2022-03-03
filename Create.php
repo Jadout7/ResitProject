@@ -18,7 +18,7 @@
         if(isset($_POST['create'])){
             if(!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
                 if($_FILES['image']['size']<2500000 && strlen($_FILES['image']['name'])<=35){
-                    $fileDimentions = @getimagesize($_FILES["uploadedFile"]["tmp_name"]);
+                    $fileDimentions = @getimagesize($_FILES["image"]["tmp_name"]);
                     $width = $fileDimentions[0];
                     $height = $fileDimentions[1];
                     if ($width > "500" && $height > "500") {
