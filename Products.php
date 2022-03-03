@@ -14,18 +14,20 @@
                 $result = mysqli_stmt_get_result($stmt);
                 while($attr=mysqli_fetch_assoc($result)) {
     ?>
-    <article>
-        <div class = 'article_product'>
-            <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image"><br><br>
-            <h4><?php echo $attr['title']?></h4><br>
-            <p><?php echo $attr['description'] ?></p><br>
-            <p><b><i><?php echo $attr['category'] ?></i></b></p><br>
-            <h4><?php echo "Price: &euro;" .$attr['price'] ?></h4><br>
-            <div class = 'log'>
-                <input type="submit" value="Add to Cart">
+    <div class=articleproducts>
+        <article>
+            <div class = 'article_product'>
+                <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image"><br><br>
+                <h4><?php echo $attr['title']?></h4><br>
+                <p><?php echo $attr['description'] ?></p><br>
+                <p><b><i><?php echo $attr['category'] ?></i></b></p><br>
+                <h4><?php echo "Price: &euro;" .$attr['price']. ".00"; ?></h4><br>
+                <div class = 'log'>
+                    <input type="submit" value="Add to Cart">
+                </div>
             </div>
-        </div>
-    </article>
+        </article>
+    </div>
     <?php
                 }
             }
