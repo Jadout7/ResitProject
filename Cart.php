@@ -42,10 +42,10 @@
         ?>
         <article>
             <div class="productBox">
-                <img src="<?php echo $attr['image'] ?>" alt="Product Image">
+                <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image">
                 <h2><?php echo"Product : " .$attr['title']; ?></h2>
                 <h3><?php echo"Quantity : " .$attr['quantity']; ?></h3>
-                <h3><?php echo "Subtotal : &euro; " .$subtotal;?></h3>
+                <h3><?php echo "Subtotal : &euro; " .$subtotal. ".00";?></h3>
             </div>
         </article>
         <?php
@@ -63,9 +63,9 @@
         <?php
             if(isset ($_POST['Update'])){
                 if($_POST['orderBy'] == "PriceAscending"){
-                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price asc;");
-                    if ($query = mysqli_prepare($conn, $query)) {
-                        if (mysqli_stmt_execute($query)) {
+                    $sql = "select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price asc;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        if (mysqli_stmt_execute($stmt)) {
                             }else{
                                 echo mysqli_error($conn);
                             }
@@ -74,9 +74,9 @@
                     }
                 }
                 elseif($_POST['orderBy'] == "PriceDescending"){
-                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price desc;");
-                    if ($query = mysqli_prepare($conn, $query)) {
-                        if (mysqli_stmt_execute($query)) {
+                    $sql = "select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by price desc;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        if (mysqli_stmt_execute($stmt)) {
                             }else{
                                 echo mysqli_error($conn);
                             }
@@ -85,9 +85,9 @@
                     }
                 }
                 elseif($_POST['orderBy'] == "NameAscending"){
-                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title asc;");
-                    if ($query = mysqli_prepare($conn, $query)) {
-                        if (mysqli_stmt_execute($query)) {
+                    $sql = "select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title asc;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        if (mysqli_stmt_execute($stmt)) {
                             }else{
                                 echo mysqli_error($conn);
                             }
@@ -96,9 +96,9 @@
                     }
                 }
                 elseif($_POST['orderBy'] == "NameDescending"){
-                    $query = mysqli_query("select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title desc;");
-                    if ($query = mysqli_prepare($conn, $query)) {
-                        if (mysqli_stmt_execute($query)) {
+                    $sql = "select i.image, i.title, oi.quantity, i.price FROM item i JOIN ordereditem oi ON oi.order_item_id = i.item_id JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id=? order by title desc;";
+                    if ($stmt = mysqli_prepare($conn, $sql)) {
+                        if (mysqli_stmt_execute($stmt)) {
                             }else{
                                 echo mysqli_error($conn);
                             }
