@@ -35,7 +35,7 @@
         <article>
             <div class="orderBox">
                 <h2>Order Number: <?php echo $attr['order_id']; ?></h2>
-                <h3>Total price: <?php echo "&euro;" .$total; ?></h3>
+                <h3>Total price: <?php echo "&euro;" .$total. ".00"; ?></h3>
                 <a href="#">Order details &gt;&gt;</a>
            </div>
         </article>
