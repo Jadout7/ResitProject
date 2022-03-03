@@ -40,7 +40,7 @@
                 $desc = $_POST['desc'];
                 $cat = $_POST['cat'];
                 $price = $_POST['price'];
-                $img = $_FILES['image'];
+                $img = $_FILES['image']['name'];
                 $sql = "INSERT INTO item (title, description, category, price, image) VALUES (?,?,?,?,?)";
                 if($stmt = mysqli_prepare($conn, $sql)){ 
                     mysqli_stmt_bind_param($stmt, "sssss", $title, $desc, $cat, $price, $img); 
