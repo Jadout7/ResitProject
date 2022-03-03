@@ -44,7 +44,7 @@
             <div class="productBox">
                 <img src = "./upload/<?php echo $attr['image']?>" alt = "Product Image">
                 <h2><?php echo"Product : " .$attr['title']; ?></h2>
-                <h3><?php echo"Quantity : " .$attr['quantity']; ?></h3>
+                <h3>Quantity: <input type="number" name="quantity" min="1" max="100"></h3>
                 <h3><?php echo "Subtotal : &euro; " .$subtotal. ".00";?></h3>
             </div>
         </article>
