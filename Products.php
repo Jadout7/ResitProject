@@ -17,7 +17,7 @@
     <article>
         <div class = 'article_product'>
             <img src = "<?php $attr['image']?>" alt = "Product Image">
-            <h3><?php echo $attr['title'] ?></h3>
+            <h4><?php echo $attr['title'] ?></h4>
             <p><?php echo $attr['description'] ?></p>
             <p><b><i><?php echo $attr['category'] ?></i></b></p>
             <h4><?php echo "Price: &euro;" .$attr['price'] ?></h4>
