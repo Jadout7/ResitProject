@@ -7,6 +7,20 @@
         <div class='mainTitle'>
             <h1>Our Products</h1>
         </div>
+        <form method="post" action="Sort.php" enctype="multipart/form-data">
+            <div class="orderBy">
+                <select name="orderBy">
+                    <option value=" "> </option>
+                    <option value="Price Asc">Price Ascending</option>
+                    <option value="Price Desc">Price Descending</option>
+                    <option value="Name Asc">Name Ascending</option>
+                    <option value="Name Desc">Name Descending</option>
+                </select>
+                <label class="log">
+                <input type="submit" name="Sort" value="Sort" >
+                </label>
+            </div>
+        </form>
         <?php
         $sql = "select * FROM item;";
         if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -14,7 +28,6 @@
                 $result = mysqli_stmt_get_result($stmt);
                 while ($attr = mysqli_fetch_assoc($result)) {
         ?>
-        <div class=articleproducts>
             <article>
                 <div class='article_product'>
                     <img src="./upload/<?php echo $attr['image'] ?>" alt="Product Image"><br><br>
@@ -34,7 +47,6 @@
                     </div>
                 </div>
             </article>
-        </div>
         <?php
                 }
             }
