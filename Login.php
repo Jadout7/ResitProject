@@ -43,7 +43,7 @@
                         if(!empty($_POST['email']) && !empty($_POST['password'])){
                             if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ //filters variable w email and validates it
                                 $email = $_POST['email'];
-                                $sql = "SELECT 'user_id', firstname, lastname, password, user_type FROM user WHERE email = ?";
+                                $sql = "SELECT user_id, firstname, lastname, password, user_type FROM user WHERE email = ?";
                                 if($stmt = mysqli_prepare($conn, $sql)){ //database compiles and performs query optimization and stores w/o executing
                                     mysqli_stmt_bind_param($stmt, "s", $email); //need to bind $email to parameters/? in the sql statement
                                     if(mysqli_stmt_execute($stmt)){
