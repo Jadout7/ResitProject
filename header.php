@@ -7,34 +7,21 @@
         <nav>
             <div class="head_left">
                 <ul>
-                    <li><a href="Main.php"><h3><b>NHL WEBSHOP</b></h3></a></li>
+                    <li><a href="Main.php">
+                            <h3><b>NHL WEBSHOP</b></h3>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="head_center">
-                <ul>
-                <form method="post">
-                    <li><input type="text" name="text" value="Zoeken"></li>
-                    <label class="log">
-                    <li><input type="submit" name="Search" value="Search"></li>
-                    </label>
+                <form method="post" action="Search.php">
+                    <ul>
+                        <li><input type="text" name="text"></li>
+                        <label class="search">
+                            <li><input type="submit" name="Search" value="Search"></li>
+                        </label>
+                    </ul>
                 </form>
-                <?php 
-                if(isset($_POST['Search'])){
-                    $search=$_POST['text'];
-                    $sql="SELECT * from item where title like %?%;";
-                    if ($stmt = mysqli_prepare($conn, $sql)) {
-                        mysqli_stmt_bind_param($stmt,'s',$search);
-                        if (mysqli_stmt_execute($stmt)) {
-                            mysqli_stmt_store_result($stmt);
-                            $result = mysqli_stmt_get_result($stmt);
-                            while ($attr = mysqli_fetch_assoc($result)) {
-                                
-                            }
-                        }
-                    }
-                }
-                ?>
-                </ul>
             </div>
             <div class="head_right1">
                 <ul>
