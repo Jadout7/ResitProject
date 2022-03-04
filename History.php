@@ -18,11 +18,11 @@
             include 'Database.php';
             $subtotal=0;
             $total=0;
-                $sql = "select ordereditem.item_id, item.price, ordereditem.quantity, ordereditem.status. ordereditem.order_id
+                $sql = "select ordereditem.item_id, item.price, ordereditem.quantity, ordereditem.status, ordereditem.order_id
                     FROM item 
                     JOIN ordereditem ON ordereditem.item_id = item.item_id
                     WHERE ordereditem.user_id=?
-                    GROUP BY ordereditem.order_id;";
+                    GROUP BY ordereditem.order_id";
                     if($stmt = mysqli_prepare($conn, $sql)) {
                         mysqli_stmt_bind_param($stmt, "i", $user_id);
                         if(mysqli_stmt_execute($stmt)) {
