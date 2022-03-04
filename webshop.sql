@@ -86,9 +86,8 @@ CREATE TABLE `item` (
 --
 -- Indexes for table `ordereditem`
 --
-ALTER TABLE `ordereditem`
-  ADD FOREIGN KEY (`item_id`) REFERENCES item(`item_id`);
-
+-- ALTER TABLE `ordereditem`
+--  ADD FOREIGN KEY (`item_id`) REFERENCES item(`item_id`);
 
 --
 -- Indexes for table `item`
@@ -96,21 +95,20 @@ ALTER TABLE `ordereditem`
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`);
 
+ALTER TABLE `ordereditem`
+    ADD PRIMARY KEY (`order_id`);
+
 --
 -- Indexes for table `orderpicker`
 --
-ALTER TABLE `orderpicker`
-  ADD FOREIGN KEY (`order_id`) REFERENCES ordereditem(`order_id`);
+-- ALTER TABLE `orderpicker`
+--  ADD FOREIGN KEY (`order_id`) REFERENCES ordereditem(`order_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `ordereditem`
@@ -127,8 +125,7 @@ ALTER TABLE `item`
 --
 -- AUTO_INCREMENT for table `orderpicker`
 --
-ALTER TABLE `orderpicker`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+
 
 --
 -- AUTO_INCREMENT for table `user`
