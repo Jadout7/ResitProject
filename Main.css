@@ -235,11 +235,11 @@ article{
     margin-top:15px;
     align-items:center;
     display:grid;
+    width:40%;
 }
 
 .articleproducts{
      align-items: center;
-     width:40%;
 }
 
 .productBox{
@@ -425,6 +425,7 @@ main{
 
 .article_product{
     padding:10px;
+    width:100%;
     text-align: center;
     margin: 20px 0px 0px 0px;
     border: 1px solid black 
