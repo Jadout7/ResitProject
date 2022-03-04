@@ -89,7 +89,7 @@ nav ul li a h3{
     color: white;
     text-decoration: none;
 }
-
+ 
 nav ul li textarea{
     resize: none;
     height:32px;
@@ -240,6 +240,7 @@ article{
 
 .articleproducts{
      align-items: center;
+     width:40%;
 }
 
 .productBox{
@@ -482,7 +483,7 @@ main{
 .orderBy select{
     padding-left:13px;
     height:40px;
-    width:170px;
+    width:140px;
 }
 
 .sort{
