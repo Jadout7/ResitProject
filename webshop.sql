@@ -26,25 +26,14 @@ USE `webshop`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ordereditem`
 --
 
 CREATE TABLE `ordereditem` (
-  `order_item_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,17 +83,11 @@ CREATE TABLE `item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
-
---
--- Indexes for dumped tables
---
-
 --
 -- Indexes for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  ADD PRIMARY KEY (`order_item_id`);
+  ADD FOREIGN KEY (`item_id`) REFERENCES item(`item_id`);
 
 --
 -- Indexes for table `item`
@@ -116,19 +99,13 @@ ALTER TABLE `item`
 -- Indexes for table `orderpicker`
 --
 ALTER TABLE `orderpicker`
-  ADD PRIMARY KEY (`order_id`);
+  ADD FOREIGN KEY (`order_id`) REFERENCES ordereditem(`order_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -138,7 +115,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item`
@@ -159,10 +136,7 @@ ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
