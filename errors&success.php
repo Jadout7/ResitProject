@@ -75,6 +75,11 @@
                 echo "<br><br><a href='./Cart.php'><h3>&nbsp;&nbsp;Cart</h3></a>";
                 echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
             }
+            elseif($_GET['success'] == 'deleted') {
+                echo "<br><p class='success'>&nbsp;&nbsp;Item added to cart!</p>";
+                echo "<br><br><a href='./Cart.php'><h3>&nbsp;&nbsp;Cart</h3></a>";
+                echo "<br><br><a href='./Main.php'><h3>&nbsp;&nbsp;Home</h3></a>";
+            }
             
         }
         ?>
