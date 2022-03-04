@@ -38,11 +38,11 @@
                         </div>
                     </article>
     <?php
-                        }
                     }
                 }
             }
         }
+    }
     ?>
 
 </body>
