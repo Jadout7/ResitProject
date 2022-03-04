@@ -11,10 +11,10 @@
             include 'header.php';
             include 'Database.php';
 
-            /* if($_SESSION['user_type'] != 'orderpicker') {
+            if($_SESSION['user_type'] != 'orderpicker') {
                 include 'errors&success.php';
                 header("location:./errors&success.php?error=type");
-            } */
+            }
         ?>
         <main class="orderPickerTable">
             <div class="orderPickerGreetings">
@@ -66,35 +66,24 @@
                                 ?>
                             </td>
                             <td>
-                                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-                                    <select name="status">
-                                        <option placeholder="<?php echo $row['status']; ?>"></option>
-                                        <option name="received" value="received">Order received</option>
-                                        <option name="packed" value="packed">Is being packed</option>
-                                        <option name="being_shipped" value="being_shipped">Is being shipped</option>
-                                        <option name="is_shipped" value="is_shipped">Is shipped</option>
-                                    </select>
-                                    <button type="submit" name="update" value="update">Update</button>
-                                </form>
                                 <?php
-                                if (isset ($_POST['update'])){
-                                    $status = array("received","packed","being_shipped","is_shipped");
-                                    //$status = $_POST['status'];
-                                    foreach($status as $x){
-                                    if ($status == "received") {
-                                        $x = "Order received";
-                                    }else if ($status == "packed"){
-                                        $status = "Is being packed";
-                                    }else if ($status == "being_shipped"){
-                                        $status = "Is being shipped";
-                                    }else if ($status == "is_shipped"){
-                                        $status = "Is shipped";
-                                    }
-                                    //var_dump($status);
-                                    echo $x; }
-                                }
-
+                                $info = array(
+                                    "Order Received",
+                                    "Is being packed",
+                                    "Is being shipped",
+                                    "Is shipped"
+                                );
                                 ?>
+                                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+                                    <select name="status">
+                                        <?php foreach($info as $select): ?>
+                                            <option value="<?php echo $select; ?>" <?php echo (isset($_POST['status']) && $_POST['status'] == $select) ? 'selected' : ''; ?>>
+                                                <?php echo $select; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <input type="submit" value="Update" name="update">
+                                </form>
                             </td>
                             <?php
                                 }
