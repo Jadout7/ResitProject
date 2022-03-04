@@ -46,6 +46,7 @@ nav{
 
 nav ul{
     display:flex;
+    flex-direction: row;
 }
 
 nav ul li{
@@ -62,6 +63,12 @@ nav ul li a{
 nav ul li a h3{
     text-decoration: none;
     color: white;
+}
+
+nav ul li a h3:hover{
+    padding:1px;
+    background-color:white;
+    color:#329CE5;
 }
 
 .userInfo{
@@ -498,6 +505,17 @@ main{
     padding: 6px 10px;
     border-style: none;
     color: white;
+    font-weight:700;
+    width:110px;
+}
+
+.search input[type=submit]{
+    height: 30px;
+    background-color: white;
+    padding: 6px 10px;
+    border-style: 1px solid black;
+    color:#329CE5;
+    font: size 16px;
     font-weight:700;
     width:110px;
 }
