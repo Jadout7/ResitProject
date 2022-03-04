@@ -25,7 +25,7 @@
             </div>
         </div>
         <?php
-            $user_id=3;
+            $user_id=2;
             $subtotal=0;
             $total=0;
             $sql = "select i.image, i.title, oi.quantity, i.price
