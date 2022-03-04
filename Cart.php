@@ -10,22 +10,24 @@
     <?php
         include 'Database.php';
         include 'header.php';
+        if(!isset($_SESSION['sessionID'])) {
+        header("location:./errors&success.php?error=login");
+    }
     ?>
     <main>
         <div class="mainTitle">
             <h1>Your cart</h1>
         </div>
         <?php
-            $user_id=2;
+            $user_id = $_SESSION['sessionID'];
             $subtotal=0;
             $total=0;
-            $sql = "select i.image, i.title, oi.quantity, i.price
-                FROM item i
-                JOIN ordereditem oi ON oi.order_item_id = i.item_id
-                JOIN orders o ON oi.order_id = o.order_id
-                WHERE o.user_id=?;";
+            $sql = "select item.image, item.title, item.price, ordereditem.quantity, user.user_id
+                FROM item 
+                JOIN ordereditem ON ordereditem.item_id = item.item_id
+                JOIN user  ON user.user_id =" . $user_id;
+
                 if($stmt = mysqli_prepare($conn, $sql)) {
-                    mysqli_stmt_bind_param($stmt, "i", $user_id);
                     if(mysqli_stmt_execute($stmt)) {
                         $result = mysqli_stmt_get_result($stmt);
                         while($attr=mysqli_fetch_assoc($result)) {
