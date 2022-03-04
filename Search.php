@@ -1,19 +1,18 @@
-<body>
+<?php
+    include 'Database.php';
+?>
+    <body>
     <?php
     include "header.php";
-    include 'Database.php';
     ?>
     <?php
     if (isset($_POST['Search'])) {
         $search = $_POST['text'];
-        $sql = "SELECT * from item where title like %?%;";
+        $sql = "SELECT * from item where title like '%".$search."%';";
         if ($stmt = mysqli_prepare($conn, $sql)) {
-            mysqli_stmt_bind_param($stmt, 's', $search);
             if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 while ($attr = mysqli_fetch_assoc($result)) {
-                    header("Location: ./Products.php");
     ?>
                     <article>
                         <div class='article_product'>
