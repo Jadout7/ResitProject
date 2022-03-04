@@ -15,6 +15,8 @@
                     <option value="Price Desc">Price Descending</option>
                     <option value="Name Asc">Name Ascending</option>
                     <option value="Name Desc">Name Descending</option>
+                    <option value="Category Asc">Category Ascending</option>
+                    <option value="Category Desc">Category Descending</option>
                 </select>
                 <label class="log">
                 <input type="submit" name="Sort" value="Sort" >
