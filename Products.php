@@ -5,7 +5,7 @@
     ?>
     <main>
         <div class='mainTitle'>
-            <h1>Our Products<h1>
+            <h1>Our Products</h1>
         </div>
         <?php
         $sql = "select * FROM item;";
