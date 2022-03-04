@@ -44,9 +44,9 @@
                         </label>
                     </div>
                     <div>
-                        <label for="ageplus">Is this item 18+?</label>
-                        <input type="radio" name="ageplus" value="Yes">&nbsp;Yes<br/>
-                        <input type="radio" name="ageplus" value="No">&nbsp;Yes<br/>
+                        <label for="ageplus">Is this item 18+?</label><br>
+                        <input type="radio" name="ageres" value="Yes">&nbsp;Yes<br/>
+                        <input type="radio" name="ageres" value="No">&nbsp;No<br/>
                     </div>
                     <div class='log'>
                         <input type="submit" name="create" value="Create Product">
@@ -56,7 +56,6 @@
                         include 'Database.php';
                         if (isset($_POST['create'])){
                             if (!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
-                                if (strlen($price) > 4) {
                                     if ($_FILES['image']['size']<2500000) {
                                         if (strlen($_FILES['image']['name']) <= 35) {
                                             $FT = ["image/png", "image/jpeg", "image/jpg"];
@@ -68,14 +67,19 @@
                                                 if ($width < 500 && $height < 500) {
                                                     if (!file_exists("./upload/" . $_FILES['image']['name'])) {
                                                         if (move_uploaded_file($_FILES['image']['tmp_name'], "./upload/" . $_FILES['image']['name'])) {
+                                                            if(($_POST['ageres']) == 'Yes') {
+                                                                $ageres = true;
+                                                            } else {
+                                                                $ageres = false;
+                                                            }
                                                             $title = $_POST['title'];
                                                             $desc = $_POST['desc'];
                                                             $cat = $_POST['cat'];
                                                             $price = $_POST['price'];
                                                             $img = $_FILES['image']['name'];
-                                                            $sql = "INSERT INTO item (title, description, category, price, image) VALUES (?,?,?,?,?)";
+                                                            $sql = "INSERT INTO item (title, description, category, price, image, ageres) VALUES (?,?,?,?,?,?)";
                                                             if ($stmt = mysqli_prepare($conn, $sql)) {
-                                                                mysqli_stmt_bind_param($stmt, "sssss", $title, $desc, $cat, $price, $img);
+                                                                mysqli_stmt_bind_param($stmt, "ssssss", $title, $desc, $cat, $price, $img, $ageres);
                                                                 if (!mysqli_stmt_execute($stmt)) {
                                                                     echo "Error executing query" . mysqli_error($conn);
                                                                     die(); //die if we cant execute statement
@@ -101,9 +105,6 @@
                                     }else {
                                         header("location:./errors&success.php?error=size");
                                     }
-                                }else {
-                                    header("location:./errors&success.php?error=price");
-                                }
                             }else {
                                 header("location:./errors&success.php?error=missingdata");
                             }
