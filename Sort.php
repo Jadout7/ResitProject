@@ -17,14 +17,19 @@
     </div>
     <form method="post" action="Sort.php" enctype="multipart/form-data">
         <div class="orderBy">
-            <select name="orderBy">
-                <option value="Price Asc">Price Ascending</option>
-                <option value="Price Desc">Price Descending</option>
-                <option value="Name Asc">Name Ascending</option>
-                <option value="Name Desc">Name Descending</option>
-                <option value="Category Asc">Category Ascending</option>
-                <option value="Category Desc">Category Descending</option>
-            </select>
+                <?php $options = array('Price Asc', 'Price Desc', 'Name Asc', 'Name Desc', 'Category Asc', 'Category Desc'); ?>
+                <select name="orderBy">
+                    <?php foreach ($options as $option) { ?>
+                        <option value="<?php echo $option; ?>" 
+                        <?php 
+                        if (isset($_POST['orderBy']) && $_POST['orderBy'] == $option) {
+                            echo "selected";
+                        } 
+                        ?>>
+                            <?php echo $option; ?>
+                        </option>
+                    <?php }; ?>
+                </select>
             <label class="log">
                 <input type="submit" name="Sort" value="Sort">
             </label>
@@ -45,7 +50,6 @@
         } elseif ($_POST['orderBy'] == "Category Desc") {
             $sql = "SELECT * from item order by category desc;";
         }
-        echo $_POST['orderBy'];
         if ($stmt = mysqli_prepare($conn, $sql)) {
             if (mysqli_stmt_execute($stmt)) {
                 $result = mysqli_stmt_get_result($stmt);
