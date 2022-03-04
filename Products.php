@@ -10,7 +10,6 @@
         <form method="post" action="Sort.php" enctype="multipart/form-data">
             <div class="orderBy">
                 <select name="orderBy">
-                    <option value=" "> </option>
                     <option value="Price Asc">Price Ascending</option>
                     <option value="Price Desc">Price Descending</option>
                     <option value="Name Asc">Name Ascending</option>
