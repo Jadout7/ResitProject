@@ -7,9 +7,9 @@
     if(!isset($_SESSION['sessionID'])) {
       header("location:./errors&success.php?error=login");
     }
-    /* if($_SESSION['user_type'] != 'administrator') {
+    if($_SESSION['user_type'] != 'administrator') {
       header("location:./errors&success.php?error=type");
-    } */
+    }
 ?>
 </head>
 <body>
