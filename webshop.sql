@@ -42,7 +42,7 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `ordereditem` (
-  `order_item_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -104,7 +104,7 @@ CREATE TABLE `item` (
 -- Indexes for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  ADD PRIMARY KEY (`order_item_id`);
+  ADD PRIMARY KEY (`item_id`);
 
 --
 -- Indexes for table `item`
@@ -133,12 +133,6 @@ ALTER TABLE `orders`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `ordereditem`
---
-ALTER TABLE `ordereditem`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item`
