@@ -48,26 +48,62 @@
                     </div>
                 </div>
             </article>
-        <?php
-                    $item_id = $attr['item_id'];
-                    $quantity = 1;
-                    $sql = 'INSERT INTO ordereditem (item_id, order_id, quantity) VALUES (' . $item_id . ',?,' . $quantity . ')'; //the query for inserting into the database
-                    if (isset($_POST['add'])) {
+             <?php
+                $query = "Select ofage FROM user";
+                if ($stmt = mysqli_prepare($conn, $query)) { //database compiles and performs query optimization and stores w/o executing
+                    $stmt->bind_param("i", $ofage); //need to bind $email to parameters/? in the sql statement
+                    if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_bind_result($stmt, $ofage);
+                        mysqli_stmt_store_result($stmt);
+                    }
+                }
+                $item_id = $attr['item_id'];
+                $quantity = 1;
+                $sql = 'INSERT INTO ordereditem (item_id, order_id, quantity) VALUES (' . $item_id . ',?,' . $quantity . ')'; //the query for inserting into the database
+                if (isset($_POST['add'])) {
+                    if ($attr['ageres'] == 1 && $ofage == 1) {
                         if ($stmt = mysqli_prepare($conn, $sql)) {
                             $stmt->bind_param('i', $order_id);//bind values to parameters
                             if ($stmt->execute()) {
                                 header("location:./errors&success.php?success=added");
                                 mysqli_stmt_close($stmt); //close statement
                                 mysqli_close($conn); //close connection
-                            } else {
+                            }else {
                                 echo "Error: " . mysqli_error($conn);
                                 die();
                             }
+                        }else {
+                            echo "Error: " . mysqli_error($conn);
+                            die();
+                        }
+                    }elseif ($attr['ageres'] == 0 && $ofage < 1) {
+                        echo "You need to be 18+ to add this to your cart!";
+                    }elseif ($attr['ageres'] == 0) {
+                        if ($stmt = mysqli_prepare($conn, $sql)) {
+                            $stmt->bind_param('i', $order_id);//bind values to parameters
+                            if ($stmt->execute()) {
+                                header("location:./errors&success.php?success=added");
+                                mysqli_stmt_close($stmt); //close statement
+                                mysqli_close($conn); //close connection
+                            }else {
+                                echo "Error: " . mysqli_error($conn);
+                                die();
+                            }
+                        }else {
+                            echo "Error: " . mysqli_error($conn);
+                            die();
                         }
                     }
                 }
             }
+        }else {
+            echo "Error: " . mysqli_error($conn);
+            die();
         }
-        ?>
+    }else {
+            echo "Error: " . mysqli_error($conn);
+            die();
+    }
+    ?>
     </main>
 </body>
