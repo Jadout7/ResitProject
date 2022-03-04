@@ -13,9 +13,6 @@
             if (mysqli_stmt_execute($stmt)) {
                 $result = mysqli_stmt_get_result($stmt);
                 while ($attr = mysqli_fetch_assoc($result)) {
-                    $count = mysqli_num_rows($result);
-                    if($count == 0) {   
-                        echo"No results found";
                         
     ?>
                     <article>
@@ -38,7 +35,6 @@
                         </div>
                     </article>
     <?php
-                    }
                 }
             }
         }
