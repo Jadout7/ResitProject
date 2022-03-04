@@ -41,8 +41,8 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `ordereditem` (
+  `order_item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,7 +73,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(60) NOT NULL,
   `user_type` varchar(64) NOT NULL,
-  `ofage` int(11)
+  `ofage` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -89,7 +89,7 @@ CREATE TABLE `item` (
   `category` varchar(20) NOT NULL,
   `price` float(11) NOT NULL,
   `image` varchar(60) DEFAULT NULL,
-  `ageplus` int(11)
+  `ageres` boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
