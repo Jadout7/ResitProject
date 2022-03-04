@@ -1,6 +1,6 @@
 *{
     padding:0;
-    margin:0;
+    margin:0 auto;
     font-family:sans-serif, "Arial", "Segoe UI";
     box-sizing:border-box;
 }
@@ -247,7 +247,7 @@ article{
 
 .articleproducts{
      align-items: center;
-     width:40%;
+     width:100%;
 }
 
 .productBox{
