@@ -21,7 +21,11 @@
                     <h4><?php echo $attr['title'] ?></h4><br>
                     <p><?php echo "<b>Description: </b>" . $attr['description'] ?></p><br>
                     <p><b><i><?php echo "Category: " . $attr['category'] ?></i></b></p><br>
-                    <h4><?php echo "Age Restricted: " . $attr['ageres'] ?></h4><br>
+                    <h4><?php  if ($attr['ageres'] == "1")  {
+                                echo "Age restricted item.";
+                            }
+                        ?>
+                    </h4><br>
                     <h4><?php echo "Price: &euro;" . $attr['price'] . ".00"; ?></h4><br>
                     <div class='log'>
                     <form method="post" action=Add.php enctype="multipart/form-data">

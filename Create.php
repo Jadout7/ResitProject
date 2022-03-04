@@ -7,9 +7,9 @@
     if(!isset($_SESSION['sessionID'])) {
       header("location:./errors&success.php?error=login");
     }
-    if($_SESSION['user_type'] != 'administrator') {
+    /* if($_SESSION['user_type'] != 'administrator') {
       header("location:./errors&success.php?error=type");
-    }
+    } */
 ?>
 </head>
 <body>
@@ -55,7 +55,7 @@
                     <?php
                         include 'Database.php';
                         if (isset($_POST['create'])){
-                            if (!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image'])){
+                            if (!empty($_POST['title']) && !empty($_POST['desc']) && !empty($_POST['cat']) && !empty($_POST['price']) && !empty($_FILES['image']) && !empty($_POST['ageres'])){
                                     if ($_FILES['image']['size']<2500000) {
                                         if (strlen($_FILES['image']['name']) <= 35) {
                                             $FT = ["image/png", "image/jpeg", "image/jpg"];
