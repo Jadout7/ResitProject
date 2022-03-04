@@ -70,9 +70,9 @@
                                                                 $type = "customer";
                                                             }
                                                             if (($_POST['age']) == 'ofAge') {
-                                                                $ofage = "1";
+                                                                $ofage = true;
                                                             } else {
-                                                                $ofage = "0";
+                                                                $ofage = false;
                                                             }
                                                             $firstName = $_POST['firstName'];
                                                             $lastName = $_POST['lastName'];
