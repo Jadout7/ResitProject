@@ -16,15 +16,13 @@
         </div>
         <?php
             include 'Database.php';
-            $user_id = 2 ;
             $subtotal=0;
             $total=0;
-                $sql = "select o.order_id, i.price, oi.quantity, o.status
-                    FROM item i
-                    JOIN ordereditem oi ON oi.order_item_id = i.item_id
-                    JOIN orders o ON oi.order_id = o.order_id
-                    WHERE o.user_id=?
-                    GROUP BY o.order_id;";
+                $sql = "select ordereditem.item_id, item.price, ordereditem.quantity, ordereditem.status. ordereditem.order_id
+                    FROM item 
+                    JOIN ordereditem ON ordereditem.item_id = item.item_id
+                    WHERE ordereditem.user_id=?
+                    GROUP BY ordereditem.order_id;";
                     if($stmt = mysqli_prepare($conn, $sql)) {
                         mysqli_stmt_bind_param($stmt, "i", $user_id);
                         if(mysqli_stmt_execute($stmt)) {
