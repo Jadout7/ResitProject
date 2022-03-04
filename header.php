@@ -7,7 +7,10 @@
         <nav>
             <div class="head_left">
                 <ul>
-                    <li><a href="Main.php"><h3><b>NHL WEBSHOP</b></h3></a></li>
+                    <li><a href="Main.php">
+                            <h3><b>NHL WEBSHOP</b></h3>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="head_center">
