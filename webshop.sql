@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2022 at 11:10 AM
+-- Generation Time: Mar 04, 2022 at 04:43 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -19,10 +19,6 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `webshop`
---
-CREATE DATABASE IF NOT EXISTS `webshop` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `webshop`;
---
 --
 
 -- --------------------------------------------------------
@@ -81,7 +77,8 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(60) NOT NULL,
   `user_type` varchar(64) NOT NULL,
-  `ofage` tinyint(1) DEFAULT NULL
+  `ofage` tinyint(1) DEFAULT NULL,
+  `profile_pic` varchar(35) NOT NULL DEFAULT 'profile-default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -104,8 +101,7 @@ ALTER TABLE `ordereditem`
 -- Indexes for table `orderpicker`
 --
 ALTER TABLE `orderpicker`
-  ADD PRIMARY KEY `order_id` (`order_id`);
-
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `user`
@@ -121,32 +117,20 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ordereditem`
 --
 ALTER TABLE `ordereditem`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `ordereditem`
---
-
---
--- Constraints for table `orderpicker`
---
-
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
