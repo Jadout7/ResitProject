@@ -480,9 +480,9 @@ main{
 }
 
 .orderBy select{
-    padding-left:45px;
+    padding-left:13px;
     height:40px;
-    width:200px;
+    width:140px;
 }
 
 .sort{
