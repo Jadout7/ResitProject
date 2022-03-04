@@ -30,6 +30,7 @@
             }
         }
         ?>
+        <h1>Hello <?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] . "!"; ?></h1>
         <img src="./resoruces/profileImages/<?=$profilePicture?>" alt="Profile picture">
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="uploadedFile" id="file" class="profileButton">
