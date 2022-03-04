@@ -16,7 +16,7 @@
                 <div class="registerCenter">
                     <div class="registerForm">
                         <h1>Register</h1>
-                        <form method="post" autocomplete="off">
+                        <form method="post" autocomplete="off" action="<?php echo $_SERVER['PHP_SELF'];?>">
                             <div>
                                 <label for='firstName'>First name</label>
                                 <input type="text" name="firstName">
