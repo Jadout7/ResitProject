@@ -23,7 +23,14 @@
                     eros imperdiet, vitae interdum sem maximus. Praesent eu commodo ante. Phasellus venenatis molestie tortor quis ultricies.
                     </p>
                     <div class='sub'>
-                        <p><input type="submit" value="Buy">
+                        <form method="Post">
+                        <input type="submit" name="Buy" value="Buy">
+                        <?php 
+                        if(isset($_POST['Buy'])){
+                            header("Location: ./Products.php");
+                        }
+                        ?>
+                        </form>
                     </div>
                 </div>
             </div>
