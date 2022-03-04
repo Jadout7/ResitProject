@@ -16,14 +16,15 @@
         </div>
         <?php
             include 'Database.php';
-            $user_id = 3;
+            $user_id = 2 ;
             $subtotal=0;
             $total=0;
-                $sql = "select o.order_id, i.price, oi.quantity
+                $sql = "select o.order_id, i.price, oi.quantity, o.status
                     FROM item i
                     JOIN ordereditem oi ON oi.order_item_id = i.item_id
                     JOIN orders o ON oi.order_id = o.order_id
-                    WHERE o.user_id=?;";
+                    WHERE o.user_id=?
+                    GROUP BY o.order_id;";
                     if($stmt = mysqli_prepare($conn, $sql)) {
                         mysqli_stmt_bind_param($stmt, "i", $user_id);
                         if(mysqli_stmt_execute($stmt)) {
@@ -36,7 +37,8 @@
             <div class="orderBox">
                 <h2>Order Number: <?php echo $attr['order_id']; ?></h2>
                 <h3>Total price: <?php echo "&euro;" .$total. ".00"; ?></h3>
-                <a href="#">Order details &gt;&gt;</a>
+                <h3>Order Status: <?php echo $attr['status']; ?></h3>
+                <a href="Delete.php">Delete Order</a>
            </div>
         </article>
         <?php
