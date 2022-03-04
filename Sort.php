@@ -18,7 +18,6 @@
     <form method="post" action="Sort.php" enctype="multipart/form-data">
         <div class="orderBy">
             <select name="orderBy">
-                <option value=" "> </option>
                 <option value="Price Asc">Price Ascending</option>
                 <option value="Price Desc">Price Descending</option>
                 <option value="Name Asc">Name Ascending</option>
@@ -46,11 +45,11 @@
         } elseif ($_POST['orderBy'] == "Category Desc") {
             $sql = "SELECT * from item order by category desc;";
         }
+        echo $_POST['orderBy'];
         if ($stmt = mysqli_prepare($conn, $sql)) {
             if (mysqli_stmt_execute($stmt)) {
                 $result = mysqli_stmt_get_result($stmt);
                 while ($attr = mysqli_fetch_assoc($result)) {
-                    echo $_POST['orderBy'];
     ?>
                     <article>
                         <div class='article_product'>
