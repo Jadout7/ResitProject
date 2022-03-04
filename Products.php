@@ -42,13 +42,29 @@
                     </h4><br>
                     <h4><?php echo "Price: &euro;" . $attr['price'] . ".00"; ?></h4><br>
                     <div class='log'>
-                    <form method="post" action=Add.php enctype="multipart/form-data">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
                         <input type="submit" name="add" value="Add to Cart">
                     </form>
                     </div>
                 </div>
             </article>
         <?php
+                    $item_id = $attr['item_id'];
+                    $quantity = 1;
+                    $sql = 'INSERT INTO ordereditem (item_id, order_id, quantity) VALUES (' . $item_id . ',?,' . $quantity . ')'; //the query for inserting into the database
+                    if (isset($_POST['add'])) {
+                        if ($stmt = mysqli_prepare($conn, $sql)) {
+                            $stmt->bind_param('i', $order_id);//bind values to parameters
+                            if ($stmt->execute()) {
+                                header("location:./errors&success.php?success=added");
+                                mysqli_stmt_close($stmt); //close statement
+                                mysqli_close($conn); //close connection
+                            } else {
+                                echo "Error: " . mysqli_error($conn);
+                                die();
+                            }
+                        }
+                    }
                 }
             }
         }
