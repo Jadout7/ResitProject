@@ -260,7 +260,6 @@ article{
 }
 
 .productBox h3{
-    margin-left:120px;
     padding-bottom:5px;
 }
 
@@ -278,15 +277,15 @@ article{
 .total{
     display:flex;
     justify-content: flex-end;
-    padding-left:1000px;
+    padding-left:1150px;
     padding-right: 150px;
     margin:40px 0 0 0;
 }
 
 .UandC{
     display:grid;
-    grid-template-columns: 140px 140px;
-    padding-left:730px;
+    grid-template-columns: 140px;
+    padding-left:1020px;
     margin:30px;
 }
 

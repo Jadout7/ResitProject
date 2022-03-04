@@ -89,6 +89,7 @@ CREATE TABLE `item` (
 ALTER TABLE `ordereditem`
   ADD FOREIGN KEY (`item_id`) REFERENCES item(`item_id`);
 
+
 --
 -- Indexes for table `item`
 --
